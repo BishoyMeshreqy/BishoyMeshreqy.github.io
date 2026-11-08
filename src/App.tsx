@@ -20,6 +20,7 @@ import { LightboxModal } from "./components/LightboxModal";
 import { ResumeModal } from "./components/ResumeModal";
 import { ContactModal } from "./components/ContactModal";
 import { AllCredentialsModal } from "./components/AllCredentialsModal";
+import { AllProjectsModal } from "./components/AllProjectsModal";
 import { Project, JournalEntry, ExplorationItem } from "./data/portfolioData";
 
 export default function App() {
@@ -32,6 +33,7 @@ export default function App() {
   const [isResumeOpen, setIsResumeOpen] = useState<boolean>(false);
   const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
   const [isAllCredentialsOpen, setIsAllCredentialsOpen] = useState<boolean>(false);
+  const [isAllProjectsOpen, setIsAllProjectsOpen] = useState<boolean>(false);
 
   const scrollToWorks = () => {
     const el = document.getElementById("works");
@@ -66,7 +68,10 @@ export default function App() {
           />
 
           {/* Section 3: Selected Works (Bento Grid) */}
-          <SelectedWorks onSelectProject={(project) => setSelectedProject(project)} />
+          <SelectedWorks
+            onSelectProject={(project) => setSelectedProject(project)}
+            onOpenAllProjects={() => setIsAllProjectsOpen(true)}
+          />
 
           {/* Section 4: Certifications */}
           <Journal
@@ -90,6 +95,12 @@ export default function App() {
         <ProjectModal
           project={selectedProject}
           onClose={() => setSelectedProject(null)}
+        />
+
+        <AllProjectsModal
+          isOpen={isAllProjectsOpen}
+          onClose={() => setIsAllProjectsOpen(false)}
+          onSelectProject={(project) => setSelectedProject(project)}
         />
 
         <ArticleModal

@@ -5,11 +5,22 @@ import { Project, PROJECTS } from "../data/portfolioData";
 
 interface SelectedWorksProps {
   onSelectProject: (project: Project) => void;
+  onOpenAllProjects?: () => void;
 }
 
 export const SelectedWorks: React.FC<SelectedWorksProps> = ({
   onSelectProject,
+  onOpenAllProjects,
 }) => {
+  const handleViewAll = () => {
+    if (onOpenAllProjects) {
+      onOpenAllProjects();
+    } else {
+      const el = document.getElementById("projects-grid");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section id="works" className="bg-[hsl(var(--bg))] py-16 md:py-24 relative">
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16">
@@ -37,15 +48,15 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({
             </p>
           </div>
 
-          {/* Desktop "View all work" button */}
-          <div className="hidden md:inline-flex">
+          {/* "View all work" button */}
+          <div className="flex self-start md:self-auto">
             <button
-              onClick={() => onSelectProject(PROJECTS[0])}
+              onClick={handleViewAll}
               className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 cursor-pointer"
             >
               <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative flex items-center gap-2 px-5 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium border border-white/10 group-hover:border-transparent transition-colors">
-                <span>View all work</span>
+                <span>View all projects</span>
                 <ArrowRight className="w-3.5 h-3.5 text-[hsl(var(--muted))] group-hover:text-[hsl(var(--text))] group-hover:translate-x-1 transition-transform duration-200" />
               </span>
             </button>
@@ -53,7 +64,7 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({
         </motion.div>
 
         {/* Bento Grid: 7 / 5 / 5 / 7 */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
+        <div id="projects-grid" className="grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-6">
           {PROJECTS.map((project, idx) => (
             <motion.div
               key={project.id}

@@ -42,7 +42,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
           />
 
           <motion.div
@@ -53,9 +53,9 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
             className="relative w-full max-w-3xl max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/60 backdrop-blur-md sticky top-0 z-20">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md sticky top-0 z-20">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-[#89AACC] uppercase tracking-wider">
+                <span className="text-xs font-mono text-[#275CA6] uppercase tracking-wider font-medium">
                   Curriculum Vitae
                 </span>
                 <span className="text-xs text-[hsl(var(--muted))]">· 2026</span>
@@ -64,12 +64,12 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
               <div className="flex items-center gap-2">
                 <button
                   onClick={copyResumeSummary}
-                  className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-xs text-[hsl(var(--muted))] hover:text-white transition-colors flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded-full bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] hover:border-[#275CA6]/40 text-xs text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-colors flex items-center gap-1.5 cursor-pointer"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" />
-                      <span className="text-emerald-400">Copied</span>
+                      <Check className="w-3.5 h-3.5 text-emerald-600" />
+                      <span className="text-emerald-600 font-medium">Copied</span>
                     </>
                   ) : (
                     <>
@@ -81,7 +81,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                 <button
                   onClick={onClose}
                   aria-label="Close resume"
-                  className="w-8 h-8 rounded-full bg-[hsl(var(--stroke))]/40 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-white transition-colors"
+                  className="w-8 h-8 rounded-full bg-[hsl(var(--stroke))]/50 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-colors cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -92,10 +92,10 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
             <div className="overflow-y-auto p-6 sm:p-10 space-y-10">
               {/* Profile Bio */}
               <div>
-                <h2 className="text-3xl sm:text-4xl font-display italic text-white tracking-tight">
+                <h2 className="text-3xl sm:text-4xl font-display italic text-[hsl(var(--text))] tracking-tight">
                   Bishoy Meshreqy
                 </h2>
-                <p className="text-sm sm:text-base text-[#89AACC] font-mono mt-1">
+                <p className="text-sm sm:text-base text-[#275CA6] font-mono mt-1 font-medium">
                   Electrical Design · Technical Office · BIM Engineer
                 </p>
                 <p className="mt-4 text-xs sm:text-sm text-[hsl(var(--muted))] leading-relaxed max-w-xl">
@@ -105,7 +105,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
 
               {/* Experience */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#89AACC] border-b border-[hsl(var(--stroke))] pb-2">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] border-b border-[hsl(var(--stroke))] pb-2 font-medium">
                   <Briefcase className="w-4 h-4" />
                   <span>Selected Experience</span>
                 </div>
@@ -113,7 +113,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                 <div className="space-y-5">
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
                     <div>
-                      <h4 className="text-base font-medium text-white">
+                      <h4 className="text-base font-medium text-[hsl(var(--text))]">
                         Principal Design Engineer & Director
                       </h4>
                       <p className="text-xs text-[hsl(var(--muted))]">
@@ -131,7 +131,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
 
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 pt-3">
                     <div>
-                      <h4 className="text-base font-medium text-white">
+                      <h4 className="text-base font-medium text-[hsl(var(--text))]">
                         Lead Creative Technologist
                       </h4>
                       <p className="text-xs text-[hsl(var(--muted))]">
@@ -148,7 +148,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
 
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 pt-3">
                     <div>
-                      <h4 className="text-base font-medium text-white">
+                      <h4 className="text-base font-medium text-[hsl(var(--text))]">
                         Senior Interactive Developer
                       </h4>
                       <p className="text-xs text-[hsl(var(--muted))]">
@@ -164,22 +164,22 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
 
               {/* Core Competencies */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#89AACC] border-b border-[hsl(var(--stroke))] pb-2">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] border-b border-[hsl(var(--stroke))] pb-2 font-medium">
                   <Code2 className="w-4 h-4" />
                   <span>Technical & Creative Stack</span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                  <div className="p-4 rounded-xl bg-[hsl(var(--bg))]/50 border border-[hsl(var(--stroke))]">
-                    <span className="font-semibold text-white block mb-2 font-mono uppercase text-[10px]">
+                  <div className="p-4 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))]">
+                    <span className="font-semibold text-[hsl(var(--text))] block mb-2 font-mono uppercase text-[10px]">
                       Frontend & 3D
                     </span>
                     <p className="text-[hsl(var(--muted))] leading-relaxed">
                       React 19, TypeScript, WebGL, Three.js, GSAP, Framer Motion, Tailwind CSS, HLS Streaming, Canvas API.
                     </p>
                   </div>
-                  <div className="p-4 rounded-xl bg-[hsl(var(--bg))]/50 border border-[hsl(var(--stroke))]">
-                    <span className="font-semibold text-white block mb-2 font-mono uppercase text-[10px]">
+                  <div className="p-4 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))]">
+                    <span className="font-semibold text-[hsl(var(--text))] block mb-2 font-mono uppercase text-[10px]">
                       Design & Architecture
                     </span>
                     <p className="text-[hsl(var(--muted))] leading-relaxed">
@@ -192,11 +192,11 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
               {/* Education & Honors */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                 <div>
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#89AACC] mb-3">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] mb-3 font-medium">
                     <GraduationCap className="w-4 h-4" />
                     <span>Education</span>
                   </div>
-                  <h5 className="text-sm font-medium text-white">
+                  <h5 className="text-sm font-medium text-[hsl(var(--text))]">
                     B.S. in Computer Science & Visual Studies
                   </h5>
                   <p className="text-xs text-[hsl(var(--muted))] mt-1">
@@ -205,7 +205,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                 </div>
 
                 <div>
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#89AACC] mb-3">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] mb-3 font-medium">
                     <Award className="w-4 h-4" />
                     <span>Honors</span>
                   </div>
@@ -221,18 +221,18 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
               <div className="pt-6 border-t border-[hsl(var(--stroke))] flex items-center justify-between">
                 <a
                   href="mailto:BishoyMagdy.30@hotmail.com?subject=Resume%20Inquiry"
-                  className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex"
+                  className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex shadow-sm"
                 >
                   <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity" />
-                  <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--bg))] text-xs sm:text-sm text-white font-medium">
-                    <Download className="w-3.5 h-3.5" />
+                  <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium">
+                    <Download className="w-3.5 h-3.5 text-[#275CA6]" />
                     <span>Request Full PDF Dossier</span>
                   </span>
                 </a>
 
                 <button
                   onClick={onClose}
-                  className="px-4 py-2 text-xs text-[hsl(var(--muted))] hover:text-white"
+                  className="px-4 py-2 text-xs text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] cursor-pointer"
                 >
                   Close
                 </button>

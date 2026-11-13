@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { JournalEntry, JOURNAL_ENTRIES } from "../data/portfolioData";
 
 interface JournalProps {
@@ -44,23 +44,23 @@ export const Journal: React.FC<JournalProps> = ({
               <span className="font-display italic font-normal">credentials</span>
             </h2>
             <p className="mt-3 text-sm md:text-base text-[hsl(var(--muted))] max-w-lg">
-              Accredited certifications in electrical systems design, Revit BIM coordination, AutoCAD, and code compliance.
+              Accredited certifications in Revit BIM, KNX building automation, electrical power engineering, and industrial automation.
             </p>
           </div>
 
           <button
             onClick={handleViewAll}
-            className="self-start md:self-auto relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 cursor-pointer"
+            className="self-start md:self-auto relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 cursor-pointer shadow-sm"
           >
             <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative flex items-center gap-2 px-5 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium border border-white/10 group-hover:border-transparent transition-colors">
+            <span className="relative flex items-center gap-2 px-5 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium border border-[hsl(var(--stroke))] group-hover:border-transparent transition-colors">
               <span>View credentials</span>
               <ArrowUpRight className="w-3.5 h-3.5 text-[hsl(var(--muted))] group-hover:text-[hsl(var(--text))] transition-transform duration-200" />
             </span>
           </button>
         </motion.div>
 
-        {/* 4 Credentials displayed as horizontal pills */}
+        {/* 4 Certifications displayed as horizontal rows with direct Google Drive links */}
         <div id="credentials-list" className="flex flex-col gap-4">
           {JOURNAL_ENTRIES.map((entry, index) => (
             <motion.div
@@ -74,43 +74,47 @@ export const Journal: React.FC<JournalProps> = ({
                 ease: [0.25, 0.1, 0.25, 1],
               }}
               onClick={() => onSelectArticle(entry)}
-              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 p-4 sm:px-6 sm:py-4 bg-[hsl(var(--surface))]/30 hover:bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-[32px] sm:rounded-full transition-all duration-300 group cursor-pointer"
+              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 p-4 sm:px-6 sm:py-4 bg-[hsl(var(--surface))] hover:bg-white border border-[hsl(var(--stroke))] hover:border-slate-300 shadow-xs hover:shadow-md rounded-[32px] sm:rounded-full transition-all duration-300 group cursor-pointer"
             >
-              <div className="flex items-center gap-4 sm:gap-6 min-w-0">
-                {/* Thumbnail Image */}
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shrink-0 border border-white/10 bg-[hsl(var(--surface))]">
-                  <img
-                    src={entry.image}
-                    alt={entry.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
+              <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
 
-                {/* Title & Category */}
+                {/* Title, Badge & Issuer */}
                 <div className="min-w-0">
-                  <h3 className="text-sm sm:text-base md:text-lg font-medium text-[hsl(var(--text))] group-hover:text-white transition-colors truncate">
-                    {entry.title}
-                  </h3>
+                  <div className="flex flex-wrap items-center gap-2">
+                    <h3 className="text-sm sm:text-base md:text-lg font-medium text-[hsl(var(--text))] group-hover:text-[#275CA6] transition-colors truncate">
+                      {entry.title}
+                    </h3>
+                    {entry.badge && (
+                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
+                        {entry.badge}
+                      </span>
+                    )}
+                  </div>
                   <div className="flex items-center gap-2 text-xs text-[hsl(var(--muted))] mt-0.5">
                     <span className="font-mono text-[11px] text-[hsl(var(--muted))]">
-                      {entry.category}
+                      {entry.issuer}
+                    </span>
+                    <span aria-hidden="true">·</span>
+                    <span className="font-mono text-[11px] text-[hsl(var(--muted))]">
+                      {entry.date}
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* Read time, Date & Arrow */}
-              <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pl-16 sm:pl-0">
-                <div className="flex items-center gap-2 text-xs text-[hsl(var(--muted))] font-mono">
-                  <span>{entry.readTime}</span>
-                  <span aria-hidden="true">·</span>
-                  <span>{entry.date}</span>
-                </div>
-
-                <div className="w-8 h-8 rounded-full bg-[hsl(var(--stroke))]/40 flex items-center justify-center text-[hsl(var(--muted))] group-hover:text-white group-hover:bg-[#4E85BF] transition-all duration-200 shrink-0">
-                  <ArrowUpRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </div>
+              {/* Direct Google Drive Link */}
+              <div className="flex items-center justify-end gap-3 shrink-0 pl-8 sm:pl-0">
+                <a
+                  href={entry.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[hsl(var(--bg))] hover:bg-[#275CA6] border border-[hsl(var(--stroke))] hover:border-[#275CA6] text-xs font-medium text-[#275CA6] hover:text-white transition-all duration-200 shrink-0"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>View Certificate</span>
+                </a>
               </div>
             </motion.div>
           ))}

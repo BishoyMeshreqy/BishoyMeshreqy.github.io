@@ -67,7 +67,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
           />
 
           <motion.div
@@ -78,14 +78,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             className="relative w-full max-w-lg bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/60 backdrop-blur-md">
-              <span className="text-xs font-mono text-[#89AACC] uppercase tracking-wider">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md">
+              <span className="text-xs font-mono text-[#275CA6] uppercase tracking-wider font-medium">
                 Initiate Conversation
               </span>
               <button
                 onClick={onClose}
                 aria-label="Close contact modal"
-                className="w-8 h-8 rounded-full bg-[hsl(var(--stroke))]/40 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-white transition-colors"
+                className="w-8 h-8 rounded-full bg-[hsl(var(--stroke))]/50 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -95,10 +95,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             <div className="p-6 sm:p-8">
               {submitted ? (
                 <div className="py-12 flex flex-col items-center text-center">
-                  <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-emerald-400" />
+                  <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-8 h-8 text-emerald-600" />
                   </div>
-                  <h3 className="text-2xl font-display italic text-white mb-2">
+                  <h3 className="text-2xl font-display italic text-[hsl(var(--text))] mb-2">
                     Message Dispatched
                   </h3>
                   <p className="text-sm text-[hsl(var(--muted))] max-w-xs">
@@ -108,7 +108,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
-                    <h3 className="text-2xl sm:text-3xl font-display italic text-white">
+                    <h3 className="text-2xl sm:text-3xl font-display italic text-[hsl(var(--text))]">
                       Say hello
                     </h3>
                     <p className="text-xs sm:text-sm text-[hsl(var(--muted))] mt-1">
@@ -126,7 +126,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       placeholder="e.g. Sarah Connor"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-white placeholder-[hsl(var(--muted))]/50 text-sm focus:outline-none focus:border-[#4E85BF] transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     />
                   </div>
 
@@ -140,7 +140,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       placeholder="s.connor@domain.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-white placeholder-[hsl(var(--muted))]/50 text-sm focus:outline-none focus:border-[#4E85BF] transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     />
                   </div>
 
@@ -151,10 +151,10 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     <select
                       value={projectType}
                       onChange={(e) => setProjectType(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-white text-sm focus:outline-none focus:border-[#4E85BF] transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     >
                       {PROJECT_TYPES.map((t) => (
-                        <option key={t} value={t} className="bg-[hsl(var(--surface))]">
+                        <option key={t} value={t} className="bg-[hsl(var(--surface))] text-[hsl(var(--text))]">
                           {t}
                         </option>
                       ))}
@@ -170,14 +170,14 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       placeholder="Brief overview of timeline, scope, and objectives..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-white placeholder-[hsl(var(--muted))]/50 text-sm focus:outline-none focus:border-[#4E85BF] transition-colors resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors resize-none"
                     />
                   </div>
 
                   <div className="pt-2 flex items-center justify-between">
                     <a
                       href="mailto:BishoyMagdy.30@hotmail.com"
-                      className="text-xs text-[hsl(var(--muted))] hover:text-white flex items-center gap-1 transition-colors"
+                      className="text-xs text-[hsl(var(--muted))] hover:text-[#275CA6] flex items-center gap-1 transition-colors"
                     >
                       <Mail className="w-3.5 h-3.5" />
                       <span>BishoyMagdy.30@hotmail.com</span>
@@ -186,12 +186,12 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex"
+                      className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex shadow-sm cursor-pointer"
                     >
                       <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity" />
-                      <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--bg))] text-xs sm:text-sm text-white font-medium">
+                      <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium">
                         <span>{isSubmitting ? "Transmitting..." : "Send Brief"}</span>
-                        <Send className="w-3.5 h-3.5" />
+                        <Send className="w-3.5 h-3.5 text-[#275CA6]" />
                       </span>
                     </button>
                   </div>

@@ -106,7 +106,7 @@ export const Hero: React.FC<HeroProps> = ({
       ref={containerRef}
       className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[hsl(var(--bg))] px-6 pt-24 pb-16"
     >
-      {/* Background HLS Video */}
+      {/* Background HLS Video transformed into luminous light atmosphere */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <video
           ref={videoRef}
@@ -114,11 +114,12 @@ export const Hero: React.FC<HeroProps> = ({
           muted
           loop
           playsInline
-          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 opacity-75"
+          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 opacity-20 invert brightness-110 contrast-90"
         />
-        {/* Dark overlay: bg-black/20 */}
-        <div className="absolute inset-0 bg-black/20" />
-        {/* Bottom fade: h-48 bg-gradient-to-t from-bg to-transparent */}
+        {/* Soft luminous daylight veil */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F7FA]/80 via-[#F5F7FA]/60 to-[#F5F7FA]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#3B82F6]/10 rounded-full blur-[120px]" />
+        {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[hsl(var(--bg))] to-transparent" />
       </div>
 
@@ -134,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({
           Electrical{" "}
           <span
             key={roleIndex}
-            className="font-display italic text-[hsl(var(--text))] text-2xl md:text-3xl animate-role-fade-in inline-block font-normal underline decoration-[hsl(var(--stroke))] underline-offset-8"
+            className="font-display italic text-[#275CA6] text-2xl md:text-3xl animate-role-fade-in inline-block font-normal underline decoration-[hsl(var(--stroke))] underline-offset-8"
           >
             {ROLES[roleIndex]}
           </span>{" "}
@@ -152,10 +153,10 @@ export const Hero: React.FC<HeroProps> = ({
           {/* "See Works": Solid button */}
           <button
             onClick={onScrollToWorks}
-            className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 cursor-pointer"
+            className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 cursor-pointer shadow-sm"
           >
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative block rounded-full px-7 py-3.5 text-sm font-medium transition-colors duration-300 bg-[hsl(var(--text))] text-[hsl(var(--bg))] group-hover:bg-[hsl(var(--bg))] group-hover:text-[hsl(var(--text))]">
+            <span className="relative block rounded-full px-7 py-3.5 text-sm font-medium transition-colors duration-300 bg-[hsl(var(--text))] text-[hsl(var(--surface))] group-hover:bg-[hsl(var(--surface))] group-hover:text-[hsl(var(--text))]">
               See Works
             </span>
           </button>
@@ -163,10 +164,10 @@ export const Hero: React.FC<HeroProps> = ({
           {/* "Reach out...": Outlined button */}
           <button
             onClick={scrollToContact}
-            className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 cursor-pointer"
+            className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 cursor-pointer shadow-sm"
           >
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative block rounded-full px-7 py-3.5 text-sm font-medium transition-all duration-300 bg-[hsl(var(--bg))] text-[hsl(var(--text))] border-2 border-[hsl(var(--stroke))] group-hover:border-transparent">
+            <span className="relative block rounded-full px-7 py-3.5 text-sm font-medium transition-all duration-300 bg-[hsl(var(--surface))] text-[hsl(var(--text))] border border-[hsl(var(--stroke))] group-hover:border-transparent">
               Reach out...
             </span>
           </button>

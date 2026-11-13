@@ -35,7 +35,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/90 backdrop-blur-xl"
+            className="absolute inset-0 bg-slate-100/90 backdrop-blur-xl"
           />
 
           <motion.div
@@ -48,7 +48,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             {/* Top controls */}
             <div className="w-full flex items-center justify-between pb-4">
               <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#89AACC]" />
+                <Sparkles className="w-4 h-4 text-[#275CA6]" />
                 <span className="text-xs font-mono uppercase tracking-wider text-[hsl(var(--muted))]">
                   {item.category} · {item.year}
                 </span>
@@ -57,14 +57,14 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
               <button
                 onClick={onClose}
                 aria-label="Close lightbox"
-                className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white transition-colors"
+                className="w-10 h-10 rounded-full bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] hover:border-[#275CA6] flex items-center justify-center text-[hsl(var(--text))] transition-colors shadow-sm cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* High-res Image Container */}
-            <div className="w-full max-h-[75vh] rounded-3xl overflow-hidden border border-white/15 bg-black/50 shadow-2xl flex items-center justify-center">
+            <div className="w-full max-h-[75vh] rounded-3xl overflow-hidden border border-[hsl(var(--stroke))] bg-[hsl(var(--surface))] shadow-2xl flex items-center justify-center">
               <img
                 src={item.image}
                 alt={item.title}
@@ -76,7 +76,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
             {/* Title & Caption */}
             <div className="w-full mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 px-2">
               <div>
-                <h3 className="text-xl sm:text-2xl font-display italic text-white">
+                <h3 className="text-xl sm:text-2xl font-display italic text-[hsl(var(--text))]">
                   {item.title}
                 </h3>
                 <p className="text-xs sm:text-sm text-[hsl(var(--muted))]">
@@ -88,7 +88,7 @@ export const LightboxModal: React.FC<LightboxModalProps> = ({
                 href="https://www.linkedin.com/in/bishoy-meshreqy"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="self-start sm:self-auto flex items-center gap-1.5 text-xs text-[#89AACC] hover:text-white transition-colors"
+                className="self-start sm:self-auto flex items-center gap-1.5 text-xs text-[#275CA6] hover:text-[hsl(var(--text))] font-medium transition-colors"
               >
                 <span>View on LinkedIn</span>
                 <ExternalLink className="w-3.5 h-3.5" />

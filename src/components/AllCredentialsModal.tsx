@@ -36,7 +36,7 @@ export const AllCredentialsModal: React.FC<AllCredentialsModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
           />
 
           {/* Modal Container */}
@@ -48,9 +48,9 @@ export const AllCredentialsModal: React.FC<AllCredentialsModalProps> = ({
             className="relative w-full max-w-5xl max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 sm:px-8 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/70 backdrop-blur-md sticky top-0 z-20">
+            <div className="flex items-center justify-between px-6 py-4 sm:px-8 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md sticky top-0 z-20">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono text-[#89AACC] uppercase tracking-wider">
+                <span className="text-xs font-mono text-[#275CA6] uppercase tracking-wider font-medium">
                   Professional Credentials
                 </span>
                 <span className="text-xs text-[hsl(var(--muted))]">· 4 Verified Accreditations</span>
@@ -59,7 +59,7 @@ export const AllCredentialsModal: React.FC<AllCredentialsModalProps> = ({
               <button
                 onClick={onClose}
                 aria-label="Close credentials view"
-                className="w-9 h-9 rounded-full bg-[hsl(var(--stroke))]/40 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-white transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-[hsl(var(--stroke))]/50 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -69,11 +69,11 @@ export const AllCredentialsModal: React.FC<AllCredentialsModalProps> = ({
             <div className="overflow-y-auto p-6 sm:p-8 md:p-10 space-y-8">
               {/* Title Section */}
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-display italic text-white tracking-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-display italic text-[hsl(var(--text))] tracking-tight">
                   All Credentials & Certifications
                 </h2>
                 <p className="text-sm sm:text-base text-[hsl(var(--muted))] mt-2 max-w-2xl">
-                  Accredited qualifications held by Bishoy Meshreqy across Revit BIM modeling, Navisworks clash coordination, AutoCAD electrical design, and NFPA/IEC code standards.
+                  Accredited qualifications held by Bishoy Meshreqy from Eduneers, Schneider Electric, EduVate, and HA Consulting Group, with direct Google Drive verification links.
                 </p>
               </div>
 
@@ -82,22 +82,22 @@ export const AllCredentialsModal: React.FC<AllCredentialsModalProps> = ({
                 {JOURNAL_ENTRIES.map((cert) => (
                   <div
                     key={cert.id}
-                    className="p-6 rounded-2xl bg-[hsl(var(--bg))]/60 border border-[hsl(var(--stroke))] flex flex-col justify-between hover:border-white/20 transition-all group"
+                    className="p-6 rounded-2xl bg-[hsl(var(--bg))]/70 hover:bg-white border border-[hsl(var(--stroke))] flex flex-col justify-between hover:border-[#275CA6]/40 hover:shadow-md transition-all group"
                   >
                     <div>
                       {/* Top tag & badge */}
                       <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="text-[11px] font-mono text-[#89AACC] uppercase tracking-wider">
-                          {cert.category}
+                        <span className="text-[11px] font-mono text-[#275CA6] uppercase tracking-wider font-medium">
+                          {cert.issuer} · {cert.date}
                         </span>
-                        <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-0.5 rounded-full border border-emerald-500/20">
+                        <div className="flex items-center gap-1.5 text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
                           <ShieldCheck className="w-3.5 h-3.5" />
-                          <span>Verified</span>
+                          <span>{cert.badge || "Verified"}</span>
                         </div>
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-lg sm:text-xl font-medium text-white group-hover:text-[#89AACC] transition-colors mb-2">
+                      <h3 className="text-lg sm:text-xl font-medium text-[hsl(var(--text))] group-hover:text-[#275CA6] transition-colors mb-2">
                         {cert.title}
                       </h3>
 
@@ -116,10 +116,18 @@ export const AllCredentialsModal: React.FC<AllCredentialsModalProps> = ({
                       </div>
                     </div>
 
-                    {/* Bottom row: Credential ID & Authority */}
-                    <div className="pt-4 border-t border-[hsl(var(--stroke))]/60 flex items-center justify-between text-xs font-mono text-[hsl(var(--muted))]">
-                      <span>{cert.date}</span>
-                      <span className="text-white font-medium">{cert.readTime}</span>
+                    {/* Bottom row: Drive Certificate Link */}
+                    <div className="pt-4 border-t border-[hsl(var(--stroke))] flex items-center justify-between text-xs font-mono text-[hsl(var(--muted))]">
+                      <span>Google Drive Certificate</span>
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-[#275CA6] hover:underline font-medium"
+                      >
+                        <span>View Certificate</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
                     </div>
                   </div>
                 ))}
@@ -131,18 +139,18 @@ export const AllCredentialsModal: React.FC<AllCredentialsModalProps> = ({
                   href="https://www.linkedin.com/in/bishoy-meshreqy"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex"
+                  className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex shadow-sm"
                 >
                   <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity" />
-                  <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--bg))] text-xs sm:text-sm text-white font-medium">
+                  <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium">
                     <span>Verify Credentials on LinkedIn</span>
-                    <ExternalLink className="w-3.5 h-3.5" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#275CA6]" />
                   </span>
                 </a>
 
                 <button
                   onClick={onClose}
-                  className="px-5 py-2.5 text-xs text-[hsl(var(--muted))] hover:text-white transition-colors cursor-pointer"
+                  className="px-5 py-2.5 text-xs text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-colors cursor-pointer"
                 >
                   Close Window
                 </button>

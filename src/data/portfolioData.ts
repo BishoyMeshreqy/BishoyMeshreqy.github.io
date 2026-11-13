@@ -1,361 +1,541 @@
+import revitMepImg from "../assets/images/revit_mep_bim_1794580153393.jpg";
+import navisworksImg from "../assets/images/navisworks_clash_coordination_1794580153476.jpg";
+import autocadImg from "../assets/images/autocad_electrical_drafting_1794580155289.jpg";
+import etapPowerImg from "../assets/images/etap_power_analysis_1794580154436.jpg";
+import dialuxImg from "../assets/images/dialux_lighting_simulation_1794580153755.jpg";
+import powerBiImg from "../assets/images/powerbi_engineering_dashboard_1794580154787.jpg";
+
+export type ProjectCategory =
+  | "All Projects"
+  | "Institutional"
+  | "Hospitality"
+  | "Residential"
+  | "Educational";
+
+export interface ServiceItem {
+  id: string;
+  title: string;
+  description: string;
+  tools: string[];
+  icon: "design" | "bim" | "lighting" | "calculations";
+}
+
 export interface Project {
   id: string;
   title: string;
-  italicTitle?: string;
   subtitle: string;
-  category: string;
+  location: string;
+  category: Exclude<ProjectCategory, "All Projects">;
+  scopeOverlay: string;
   year: string;
   client: string;
   role: string;
   description: string;
   detailedText: string;
   image: string;
-  aspect: string;
-  colSpan: string;
+  alt: string;
   tags: string[];
+  colSpan: string;
   metrics?: string;
+  featured?: boolean;
   liveUrl?: string;
 }
+
+export type ProjectItem = Project;
 
 export interface JournalEntry {
   id: string;
   title: string;
-  italicWord?: string;
-  excerpt: string;
-  content: string[];
+  issuer: string;
+  badge?: string;
+  category: string;
   readTime: string;
   date: string;
-  category: string;
+  excerpt: string;
   image: string;
+  content: string[];
+  url: string;
 }
 
 export interface ExplorationItem {
   id: string;
   title: string;
-  caption: string;
-  year: string;
   category: string;
-  rotation: string;
+  year: string;
   image: string;
+  rotation: string;
+  caption: string;
 }
+
+export interface StatItem {
+  number: string;
+  label: string;
+  detail: string;
+}
+
+export interface CertificationItem {
+  id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  badge?: string;
+  url: string;
+}
+
+export interface ToolSkillItem {
+  name: string;
+  description: string;
+}
+
+export interface ToolGroup {
+  id: string;
+  category: string;
+  items: ToolSkillItem[];
+}
+
+export const PROFILE = {
+  brandName: "Eng. Bishoy Meshreqy",
+  fullName: "Eng. Bishoy M. Meshreqy",
+  subtitle:
+    "Electrical Technical Office & Design Engineer · BIM Specialist · Available for Freelance",
+  locationBadge: "Egypt & Remote",
+  experienceBadge: "2+ Years Experience",
+  logoSrc: "/images/bm-logo.png",
+  email: "BishoyMagdy.30@hotmail.com",
+  phone: "+201212299454",
+  linkedinUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
+  linkedinDisplay: "linkedin.com/in/bishoy-meshreqy",
+  copyright:
+    "© 2026 Bishoy Magdy Meshreqy · Electrical Technical Office & Design Engineer & BIM Specialist",
+};
+
+export const SERVICES: ServiceItem[] = [
+  {
+    id: "electrical-design",
+    title: "Electrical Design",
+    description:
+      "Full electrical design packages including SLDs, panel schedules, lighting, power, and cable routing.",
+    tools: ["AutoCAD", "Revit"],
+    icon: "design",
+  },
+  {
+    id: "bim-modeling",
+    title: "BIM Modeling",
+    description:
+      "Revit MEP electrical modeling at LOD 300/350/400, clash detection, and coordination drawings.",
+    tools: ["Revit", "Navisworks"],
+    icon: "bim",
+  },
+  {
+    id: "lighting-design",
+    title: "Lighting Design",
+    description:
+      "DIALux Evo lighting simulations, lux calculations, and luminaire layout for interior & exterior spaces.",
+    tools: ["DIALux Evo"],
+    icon: "lighting",
+  },
+  {
+    id: "electrical-calculations",
+    title: "Electrical Calculations",
+    description:
+      "Load flow, short circuit, cable sizing, and CB selectivity studies for LV panel protection coordination.",
+    tools: ["ETAP", "Ecodial", "E-Design"],
+    icon: "calculations",
+  },
+];
+
+export const PROJECT_CATEGORIES: ProjectCategory[] = [
+  "All Projects",
+  "Institutional",
+  "Hospitality",
+  "Residential",
+  "Educational",
+];
 
 export const PROJECTS: Project[] = [
   {
-    id: "commercial-highrise-substation",
-    title: "High-Rise Commercial Tower",
-    italicTitle: "Commercial",
-    subtitle: "MV/LV Distribution & Dual 1500kVA Substation",
-    category: "Substation & Distribution",
-    year: "2025",
-    client: "Metropolitan Towers Co.",
-    role: "Electrical Technical Office Engineer",
-    description: "Complete electrical shop drawings, medium voltage / low voltage distribution, 2x1500kVA transformer substation sizing, and busway riser coordination.",
-    detailedText: "Developed full contractor-grade shop drawings including transformer room layouts, MV switchgear, main distribution boards (MDBs), and automated generator synchronizing panels. Performed short-circuit analysis and cable sizing adhering to IEC 60364 and Egyptian distribution code standards.",
-    image: "/src/assets/images/work_urban_architecture_1794063986088.jpg",
-    aspect: "aspect-[16/10]",
+    id: "kfupm",
+    title: "King Fahd University of Petroleum and Minerals Renovation",
+    subtitle: "Electrical BIM & coordination · Dhahran, Saudi Arabia",
+    location: "Dhahran, Saudi Arabia",
+    category: "Institutional",
+    scopeOverlay: "Electrical BIM & coordination",
+    year: "KSA · Institutional",
+    client: "KFUPM Campus",
+    role: "Electrical BIM & Coordination Engineer",
+    description:
+      "Electrical BIM modeling and coordination drawings for a large-scale institutional campus renovation.",
+    detailedText:
+      "Delivered comprehensive Revit MEP electrical BIM modeling and multi-discipline coordination drawings for the King Fahd University of Petroleum and Minerals campus renovation in Dhahran. Scope covered power distribution, lighting, containment routing, panel schedules, and Navisworks clash resolution across existing and upgraded academic zones.",
+    image: "/images/kfupm.jpg",
+    alt: "King Fahd University of Petroleum and Minerals project",
+    tags: ["Revit MEP", "Navisworks", "Electrical BIM", "Coordination"],
     colSpan: "md:col-span-7",
-    tags: ["AutoCAD", "Revit MEP", "Single Line Diagram", "Substation", "IEC 60364"],
-    metrics: "1500kVA Dual Substation · 32-Storey Riser",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
+    metrics: "LOD 350 BIM · Clash-Free Coordination",
+    featured: true,
+    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
   },
   {
-    id: "healthcare-isolated-power",
-    title: "Specialized Healthcare & Medical Center",
-    italicTitle: "Healthcare",
-    subtitle: "Isolated Power Systems (IPS) & Critical Life Safety",
-    category: "Healthcare & Critical Power",
-    year: "2025",
-    client: "Al-Safwa Medical Group",
-    role: "Lead Electrical BIM Modeler",
-    description: "Design and clash-free BIM coordination for operating theater isolated power systems (IPS), medical UPS networks, and emergency backup.",
-    detailedText: "Engineered isolated power systems for surgical suites according to NFPA 99. Coordinated electrical containment and medical gas infrastructure in Revit MEP to eliminate spatial clashes prior to on-site installation.",
-    image: "/src/assets/images/work_automotive_motion_1794063986087.jpg",
-    aspect: "aspect-[4/3] md:aspect-auto md:min-h-[380px]",
+    id: "kfaa",
+    title: "King Faisal Air Academy",
+    subtitle: "Electrical shop drawings · Riyadh, Saudi Arabia",
+    location: "Riyadh, Saudi Arabia",
+    category: "Institutional",
+    scopeOverlay: "Electrical shop drawings",
+    year: "KSA · Institutional",
+    client: "King Faisal Air Academy",
+    role: "Electrical Technical Office Engineer",
+    description:
+      "Detailed electrical shop drawings, containment routing, and multi-discipline technical coordination.",
+    detailedText:
+      "Produced detailed electrical shop drawings and coordinated containment layouts for King Faisal Air Academy in Riyadh. Focused on precision cable tray and trunking routing, LV distribution assemblies, and cross-discipline technical coordination aligned with strict institutional standards.",
+    image: "/images/kfaa.jpg",
+    alt: "King Faisal Air Academy project",
+    tags: ["AutoCAD", "Shop Drawings", "Containment", "Coordination"],
     colSpan: "md:col-span-5",
-    tags: ["Revit BIM", "Navisworks", "NFPA 99", "UPS Systems", "Hospital IPS"],
-    metrics: "Zero On-Site Clashes · 10 Operating Theatres",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
+    metrics: "Shop Drawings & Technical Coordination",
+    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
   },
   {
-    id: "luxury-residential-compound",
-    title: "Luxury Gated Residential Compound",
-    italicTitle: "Residential",
-    subtitle: "MV/LV Infrastructure & Street Lighting Networks",
-    category: "Infrastructure & Low Current",
-    year: "2024",
-    client: "Palm Horizon Developments",
+    id: "al-masa",
+    title: "Al Masa Hotel",
+    subtitle: "Electrical design & BIM · Cairo New Capital, Egypt",
+    location: "Cairo New Capital, Egypt",
+    category: "Hospitality",
+    scopeOverlay: "Electrical design & BIM",
+    year: "Egypt · Hospitality",
+    client: "Al Masa Hospitality",
+    role: "Electrical Design & BIM Engineer",
+    description:
+      "Comprehensive electrical design and Revit BIM coordination across luxury hospitality suites and public zones.",
+    detailedText:
+      "Executed full electrical design and Revit BIM MEP coordination across guest suites, ballrooms, back-of-house facilities, and public hospitality zones at Al Masa Hotel in the New Administrative Capital. Covered lighting, small power, normal/emergency circuits, and coordinated ceiling services.",
+    image: "/images/al-masa.jpg",
+    alt: "Al Masa Hotel project",
+    tags: ["Revit", "Electrical Design", "Hospitality MEP", "AutoCAD"],
+    colSpan: "md:col-span-6",
+    metrics: "Full Hospitality Design & BIM",
+    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
+  },
+  {
+    id: "four-seasons",
+    title: "Four Seasons Hotel",
+    subtitle: "Electrical design & BIM · Cairo New Capital, Egypt",
+    location: "Cairo New Capital, Egypt",
+    category: "Hospitality",
+    scopeOverlay: "Electrical design & BIM",
+    year: "Egypt · Hospitality",
+    client: "Four Seasons New Capital",
+    role: "Electrical Design & BIM Specialist",
+    description:
+      "High-standard hospitality electrical design, lighting layouts, and clash-free BIM MEP modeling.",
+    detailedText:
+      "Developed high-specification hospitality electrical design packages, architectural lighting layouts, and clash-free Revit MEP models for Four Seasons Hotel in Cairo New Capital. Coordinated closely with architectural, interior lighting, and mechanical systems to uphold international luxury hospitality standards.",
+    image: "/images/four-seasons.jpg",
+    alt: "Four Seasons project",
+    tags: ["Revit MEP", "Lighting Layout", "Navisworks", "BIM"],
+    colSpan: "md:col-span-6",
+    metrics: "Clash-Free Luxury Hospitality BIM",
+    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
+  },
+  {
+    id: "suite-lagoons",
+    title: "Suite Lagoons Compound",
+    subtitle: "Electrical BIM modeling · Cairo New Capital, Egypt",
+    location: "Cairo New Capital, Egypt",
+    category: "Residential",
+    scopeOverlay: "Electrical BIM modeling",
+    year: "Egypt · Residential",
+    client: "Suite Lagoons Development",
+    role: "Electrical BIM Engineer",
+    description:
+      "Electrical BIM modeling, power distribution layouts, and low-voltage coordination for residential clusters.",
+    detailedText:
+      "Delivered Revit electrical BIM models, LV power distribution layouts, and low-voltage containment coordination for residential clusters at Suite Lagoons Compound in Cairo New Capital. Ensured standardized family schedules, accurate BOQ takeoffs, and buildable field documentation.",
+    image: "/images/suite-lagoons.jpg",
+    alt: "Suite Lagoons Compound project",
+    tags: ["Revit", "Power Distribution", "LV Coordination", "BOQ"],
+    colSpan: "md:col-span-4",
+    metrics: "Multi-Cluster Residential BIM",
+    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
+  },
+  {
+    id: "nurai",
+    title: "NURAI Compound",
+    subtitle: "Electrical BIM modeling · New Cairo, Egypt",
+    location: "New Cairo, Egypt",
+    category: "Residential",
+    scopeOverlay: "Electrical BIM modeling",
+    year: "Egypt · Residential",
+    client: "NURAI Residences",
+    role: "Electrical BIM Engineer",
+    description:
+      "Revit MEP electrical modeling, panel schedules, and coordinated feeder routing for modern residential villas.",
+    detailedText:
+      "Completed Revit MEP electrical modeling, balanced load schedules, and coordinated feeder routing for modern residential villas at NURAI Compound in New Cairo. Streamlined villa-to-infrastructure riser coordination and clash resolution prior to site execution.",
+    image: "/images/nurai.jpg",
+    alt: "NURAI Compound project",
+    tags: ["Revit MEP", "Panel Schedules", "Feeder Routing", "BIM"],
+    colSpan: "md:col-span-4",
+    metrics: "Villa Cluster BIM & Schedules",
+    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
+  },
+  {
+    id: "cac",
+    title: "Cairo American College Renovation",
+    subtitle: "Electrical shop drawings · Maadi, Egypt",
+    location: "Maadi, Egypt",
+    category: "Educational",
+    scopeOverlay: "Electrical shop drawings",
+    year: "Egypt · Educational",
+    client: "Cairo American College",
     role: "Electrical Technical Office Engineer",
-    description: "External MV/LV underground cabling infrastructure, street lighting lux simulations in Dialux, package substations, and fiber networks.",
-    detailedText: "Calculated voltage drops for extensive cable networks spanning 450 residential villas. Designed intelligent energy-efficient LED roadway lighting and coordinated duct banks with civil stormwater networks.",
-    image: "/src/assets/images/work_brand_identity_1794063988117.jpg",
-    aspect: "aspect-[4/3] md:aspect-auto md:min-h-[380px]",
-    colSpan: "md:col-span-5",
-    tags: ["Dialux Evo", "AutoCAD", "Underground Cabling", "Lighting Lux", "Low Current"],
-    metrics: "450 Luxury Villas · 12km Cabling Network",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
+    description:
+      "Renovation electrical shop drawings, lighting layout updates, and as-built technical documentation.",
+    detailedText:
+      "Prepared comprehensive renovation electrical shop drawings, updated classroom and campus lighting layouts, and verified as-built technical documentation for Cairo American College in Maadi. Focused on safe phased renovation tie-ins and clear contractor-ready deliverables.",
+    image: "/images/cac.jpg",
+    alt: "Cairo American College project",
+    tags: ["AutoCAD", "Shop Drawings", "Lighting Updates", "As-Built"],
+    colSpan: "md:col-span-4",
+    metrics: "Phased Campus Renovation Docs",
+    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy",
   },
-  {
-    id: "commercial-mall-bim-clash",
-    title: "Multi-Disciplinary Commercial Mall",
-    italicTitle: "Commercial",
-    subtitle: "BIM Clash Detection & Multi-Trade Coordination",
-    category: "BIM Coordination & MEP",
-    year: "2025",
-    client: "Capital Gate Malls",
-    role: "BIM Coordination Engineer",
-    description: "Federated 3D model coordination resolving complex clashes between electrical cable trays, HVAC ductwork, fire sprinkler mains, and structural beams.",
-    detailedText: "Conducted weekly clash reviews in Navisworks Manage, generating BCF issues and engineering RFI submittals. Optimized cable tray runs to save 18% in copper busway and cable tray length.",
-    image: "/src/assets/images/work_human_perspective_1794063987798.jpg",
-    aspect: "aspect-[16/10]",
-    colSpan: "md:col-span-7",
-    tags: ["Navisworks Manage", "Revit MEP", "BCF Manager", "LOD 400", "MEP Coordination"],
-    metrics: "18% Material Cost Savings · 340+ Resolved Clashes",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
-  },
-  {
-    id: "banking-headquarters-lighting",
-    title: "Corporate Banking Headquarters",
-    italicTitle: "Corporate",
-    subtitle: "DALI-2 Smart Lighting Control & Trading Power",
-    category: "Lighting & Power Distribution",
-    year: "2024",
-    client: "National Investment Bank",
-    role: "Electrical Design Engineer",
-    description: "DALI-2 automated lighting control systems, underfloor busbar raceways for trading floors, and redundant dual-cord power feeds.",
-    detailedText: "Designed energy-efficient daylight-harvesting DALI lighting control systems with occupancy sensing. Created comprehensive panel schedules, cable schedules, and bill of quantities (BOQ).",
-    image: "/src/assets/images/exploration_abstract_forms_1794063987094.jpg",
-    aspect: "aspect-[16/10]",
-    colSpan: "md:col-span-6",
-    tags: ["DALI-2", "Lighting Control", "Panel Schedules", "BOQ", "AutoCAD"],
-    metrics: "35% Energy Reduction · Tier III Reliability",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
-  },
-  {
-    id: "industrial-logistics-mcc",
-    title: "Industrial Logistics Park & Cold Storage",
-    italicTitle: "Industrial",
-    subtitle: "Motor Control Centers (MCC) & Power Factor Correction",
-    category: "Industrial & Motor Control",
-    year: "2024",
-    client: "Apex Global Logistics",
-    role: "Electrical Technical Office Engineer",
-    description: "MCC panel design, variable frequency drive (VFD) integration, heavy industrial power factor correction, and earthing networks.",
-    detailedText: "Engineered power supplies for high-tonnage refrigeration compressors, automated conveyor lines, and heavy dock levelers. Designed capacitor bank power factor correction to achieve 0.98 power factor.",
-    image: "/src/assets/images/work_urban_architecture_1794063986088.jpg",
-    aspect: "aspect-[16/10]",
-    colSpan: "md:col-span-6",
-    tags: ["Motor Control", "VFD", "Power Factor Correction", "Industrial SLD", "Earthing"],
-    metrics: "0.98 Power Factor · 2.5MW Peak Load",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
-  },
-  {
-    id: "university-campus-low-current",
-    title: "Educational Campus & University Complex",
-    italicTitle: "Institutional",
-    subtitle: "Addressable Fire Alarm, Public Address & Security",
-    category: "Low Current & Life Safety",
-    year: "2024",
-    client: "Metropolitan Academic Foundation",
-    role: "Electrical Technical Office Engineer",
-    description: "Addressable fire alarm system, voice evacuation / public address, IP CCTV surveillance, and access control across 5 campus faculties.",
-    detailedText: "Prepared complete shop drawings for EN 54 and NFPA 72 compliant voice evacuation and fire detection. Integrated cause-and-effect matrix with HVAC smoke dampers and elevator recall systems.",
-    image: "/src/assets/images/work_automotive_motion_1794063986087.jpg",
-    aspect: "aspect-[16/10]",
-    colSpan: "md:col-span-6",
-    tags: ["NFPA 72", "Fire Alarm", "Public Address", "IP CCTV", "Access Control"],
-    metrics: "5 Campus Faculties · 100% NFPA 72 Compliance",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
-  },
-  {
-    id: "luxury-resort-lighting-grms",
-    title: "Five-Star Hotel & Luxury Resort",
-    italicTitle: "Hospitality",
-    subtitle: "Architectural DMX Lighting & Guestroom Management",
-    category: "Architectural Lighting & Hospitality",
-    year: "2025",
-    client: "Azure Bay Resorts",
-    role: "Electrical & Lighting Engineer",
-    description: "DMX dynamic facade illumination, landscape pathway lighting, guestroom energy management systems (GRMS), and emergency inverter systems.",
-    detailedText: "Designed intricate exterior architectural lighting scenes with DMX programming and Dialux photometric verification. Modeled coordinated underground conduits and weatherproof pull boxes.",
-    image: "/src/assets/images/work_brand_identity_1794063988117.jpg",
-    aspect: "aspect-[16/10]",
-    colSpan: "md:col-span-6",
-    tags: ["DMX Lighting", "Dialux Photometrics", "GRMS", "Hospitality MEP", "Revit"],
-    metrics: "DMX Architectural Illumination · 280 Key Resort",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
-  },
-  {
-    id: "governmental-lightning-earthing",
-    title: "Administrative Governmental Complex",
-    italicTitle: "Infrastructure",
-    subtitle: "Faraday Cage Lightning Protection & Earth Mesh",
-    category: "Earthing & Lightning Protection",
-    year: "2023",
-    client: "Civic Engineering Authority",
-    role: "Electrical Technical Office Engineer",
-    description: "Faraday cage lightning protection system compliant with IEC 62305 and deep earth ground mesh with step and touch potential calculations.",
-    detailedText: "Modeled structural lightning protection down conductors and earth termination network. Performed ground resistivity testing calculations to achieve less than 1-ohm earth resistance.",
-    image: "/src/assets/images/work_human_perspective_1794063987798.jpg",
-    aspect: "aspect-[16/10]",
-    colSpan: "md:col-span-6",
-    tags: ["IEC 62305", "Lightning Protection", "Earthing Mesh", "Grounding Calculations", "AutoCAD"],
-    metrics: "<1 Ohm Earth Resistance · Rolling Sphere Method",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
-  },
-  {
-    id: "mission-critical-datacenter",
-    title: "Mission-Critical Tier III Data Center",
-    italicTitle: "Mission Critical",
-    subtitle: "2N UPS Architecture & 3x2000kVA Diesel Generators",
-    category: "Mission Critical & Data Centers",
-    year: "2025",
-    client: "CloudCore Infrastructure",
-    role: "BIM & Electrical Technical Office Engineer",
-    description: "2N redundant modular UPS systems, 3x2000kVA emergency diesel generator plant with ATS, and overhead cable containment grids.",
-    detailedText: "Engineered mission-critical power distribution with zero single point of failure (SPOF). Coordinated overhead server rack busway and fiber tray systems with CFD airflow models in Revit BIM.",
-    image: "/src/assets/images/exploration_abstract_forms_1794063987094.jpg",
-    aspect: "aspect-[16/10]",
-    colSpan: "md:col-span-6",
-    tags: ["Data Center", "2N Redundancy", "Modular UPS", "Diesel Generators", "BIM LOD 400"],
-    metrics: "99.999% Availability · 4.8MW Critical Capacity",
-    liveUrl: "https://www.linkedin.com/in/bishoy-meshreqy"
-  }
 ];
 
 export const JOURNAL_ENTRIES: JournalEntry[] = [
   {
-    id: "revit-mep-electrical",
-    title: "Autodesk Certified Professional: Revit for Electrical Design",
-    italicWord: "Revit",
-    excerpt: "Comprehensive certification in BIM modeling, cable tray routing, panel boards, and clash-free MEP coordination.",
+    id: "bim-diploma",
+    title: "BIM Diploma – Revit Track",
+    issuer: "Eduneers",
+    badge: "Top 10",
+    category: "Eduneers",
+    readTime: "Top 10",
+    date: "Oct 2025",
+    excerpt:
+      "Intensive Revit MEP electrical modeling, custom family creation, LOD 300/350/400 workflows, and federated clash coordination.",
+    image: "/images/kfupm.jpg",
+    url: "https://drive.google.com/file/d/1bBsFGe4ouVIbqwhwckdinsn6q839DLvD/view?usp=sharing",
     content: [
-      "Mastery in electrical design automation, parametric Revit family creation, and automated panel board load schedules.",
-      "Hands-on implementation across multi-story commercial, residential, and healthcare developments in Egypt and Saudi Arabia.",
-      "Full compliance with IFC protocols, BIM Execution Plans (BEP), and multidisciplinary worksharing workflows."
+      "Completed the BIM Diploma (Revit Track) with Top 10 recognition at Eduneers, mastering end-to-end electrical BIM authoring and interdisciplinary coordination.",
+      "Core competencies include Revit MEP electrical systems modeling, parametric lighting and equipment family creation, automated panel schedules, and Navisworks clash detection workflows.",
     ],
-    readTime: "Autodesk Certified",
-    date: "Credential ID: ACP-9942",
-    category: "BIM & Revit",
-    image: "/src/assets/images/work_automotive_motion_1794063986087.jpg"
   },
   {
-    id: "navisworks-clash-detection",
-    title: "BIM Coordination & Clash Detection (Navisworks Manage)",
-    italicWord: "Coordination",
-    excerpt: "Multi-disciplinary MEP clash matrix resolution, 4D construction phasing, and BCF issue reporting.",
+    id: "knx-bas",
+    title: "KNX Building Automation System",
+    issuer: "Schneider Electric",
+    category: "Schneider Electric",
+    readTime: "Verified",
+    date: "Feb 2023",
+    excerpt:
+      "Certified training in KNX smart building automation topologies, lighting control scenes, HVAC integration, and ETS commissioning.",
+    image: "/images/four-seasons.jpg",
+    url: "https://drive.google.com/file/d/12SWP1Ve3X6biYK0fFQIU449M9I-jGvw2/view?usp=sharing",
     content: [
-      "Specialized in federated model clash detection between electrical containment, HVAC ducts, plumbing, and structural frames.",
-      "Resolving spatial interferences before on-site fabrication and installation to eliminate costly rework and project delays.",
-      "Proven clash matrix coordination deployed on large-scale hospitality, institutional, and educational facilities."
+      "Completed Schneider Electric's KNX Building Automation System program covering bus topology design, dimming actuators, DALI gateways, and energy-saving control strategies.",
+      "Applied KNX integration principles to hospitality and commercial electrical design packages requiring intelligent lighting and occupancy automation.",
     ],
-    readTime: "Accredited Specialist",
-    date: "Credential ID: NAV-7811",
-    category: "BIM Coordination",
-    image: "/src/assets/images/exploration_abstract_forms_1794063987094.jpg"
   },
   {
-    id: "autocad-electrical-technical-office",
-    title: "Electrical Shop Drawings & Technical Office Engineering",
-    italicWord: "Technical",
-    excerpt: "Power distribution, lighting lux calculations, single line diagrams (SLD), and technical submittals.",
+    id: "pep",
+    title: "Professional Engineer Program",
+    issuer: "EduVate",
+    badge: "90%",
+    category: "EduVate",
+    readTime: "90%",
+    date: "Oct 2022",
+    excerpt:
+      "Comprehensive electrical power distribution, short-circuit analysis, cable sizing, earthing, and international code compliance.",
+    image: "/images/al-masa.jpg",
+    url: "https://drive.google.com/file/d/1T7rm8YOl-FlLFageuXJr1hbv_VLNOWnK/view?usp=sharing",
     content: [
-      "Preparation of precise, contractor-ready electrical shop drawings, cable routing layouts, and main/sub distribution boards.",
-      "Lighting design verification using Dialux and AutoCAD electrical drafting standards.",
-      "Bill of Quantities (BOQ) preparation, material take-offs, and consultant submittal approval management."
+      "Achieved a 90% distinction in EduVate's Professional Engineer Program focused on practical MEP electrical building design and technical office engineering.",
+      "Covered load estimation, transformer and generator sizing, voltage drop calculations, breaker selectivity, and shop drawing execution standards.",
     ],
-    readTime: "Technical Office",
-    date: "Credential ID: ACD-6420",
-    category: "Design & Shop Drawings",
-    image: "/src/assets/images/work_urban_architecture_1794063986088.jpg"
   },
   {
-    id: "nfpa-iec-compliance",
-    title: "NFPA 70 (NEC) & IEC International Electrical Standards",
-    italicWord: "Standards",
-    excerpt: "Code-compliant electrical safety design, grounding & bonding, short-circuit, and voltage drop verification.",
+    id: "automation-diploma",
+    title: "Automation Diploma",
+    issuer: "HA Consulting Group",
+    category: "HA Consulting Group",
+    readTime: "Verified",
+    date: "Aug 2021",
+    excerpt:
+      "Industrial automation, classic control panels, PLC programming fundamentals, and motor control center protection logic.",
+    image: "/images/kfaa.jpg",
+    url: "https://drive.google.com/file/d/1J7r9DImAbIe30f-RDULyrRb7IHKM6xLA/view?usp=sharing",
     content: [
-      "Deep expertise in applying National Electrical Code (NEC/NFPA 70) and IEC international standards.",
-      "Designing reliable earthing/grounding networks, lightning protection, and short-circuit protection coordination.",
-      "Ensuring all electrical technical drawings satisfy municipality, civil defense, and international building authorities."
+      "Completed the Automation Diploma at HA Consulting Group covering classic control circuits, motor starters, PLC ladder logic, and VFD integration.",
+      "Built strong foundational expertise bridging power distribution panels with automated building and industrial control systems.",
     ],
-    readTime: "Code Compliance",
-    date: "Credential ID: SEC-3195",
-    category: "Codes & Standards",
-    image: "/src/assets/images/work_brand_identity_1794063988117.jpg"
-  }
+  },
 ];
 
 export const EXPLORATIONS: ExplorationItem[] = [
   {
     id: "exp-1",
-    title: "Obsidian Helix",
-    caption: "Procedural raymarched chrome topology with real-time anisotropic reflections.",
-    year: "2026",
-    category: "Shader Exploration",
-    rotation: "-rotate-2",
-    image: "/src/assets/images/exploration_abstract_forms_1794063987094.jpg"
+    title: "Autodesk Revit MEP",
+    category: "BIM & Coordination",
+    year: "LOD 300/350/400",
+    image: revitMepImg,
+    rotation: "-rotate-3",
+    caption: "Electrical modeling, parametric family creation, panel schedules, and LOD 300/350/400 BIM delivery.",
   },
   {
     id: "exp-2",
-    title: "Kinetic Velocity",
-    caption: "High-speed light dispersion modeling inside aerodynamic carbon tunnels.",
-    year: "2026",
-    category: "Motion Lab",
-    rotation: "rotate-3",
-    image: "/src/assets/images/work_automotive_motion_1794063986087.jpg"
+    title: "Autodesk Navisworks",
+    category: "BIM & Coordination",
+    year: "Clash Detection",
+    image: navisworksImg,
+    rotation: "rotate-2",
+    caption: "Multi-discipline clash detection, coordination reviews, and federated MEP model validation.",
   },
   {
     id: "exp-3",
-    title: "Monolithic Void",
-    caption: "Angular architectural study exploring brutalist shadow geometry at dusk.",
-    year: "2025",
-    category: "Spatial Composition",
-    rotation: "-rotate-1",
-    image: "/src/assets/images/work_urban_architecture_1794063986088.jpg"
+    title: "Autodesk AutoCAD",
+    category: "BIM & Coordination",
+    year: "Shop Drawings",
+    image: autocadImg,
+    rotation: "-rotate-2",
+    caption: "Detailed electrical shop drawings, single-line diagrams (SLDs), and as-built documentation.",
   },
   {
     id: "exp-4",
-    title: "Chiaroscuro Introspection",
-    caption: "High-grain monochrome portrait study captured with natural studio illumination.",
-    year: "2025",
-    category: "Editorial Portraiture",
-    rotation: "rotate-2",
-    image: "/src/assets/images/work_human_perspective_1794063987798.jpg"
+    title: "ETAP, Ecodial & E-Design",
+    category: "Electrical Analysis",
+    year: "Power Studies",
+    image: etapPowerImg,
+    rotation: "rotate-3",
+    caption: "Load flow, short circuit, cable sizing, CB selectivity, and LV panel protection coordination.",
   },
   {
     id: "exp-5",
-    title: "Tactile Press",
-    caption: "Physical blind debossing studies on 600gsm carbon black cotton board.",
-    year: "2026",
-    category: "Physical Artifacts",
-    rotation: "-rotate-3",
-    image: "/src/assets/images/work_brand_identity_1794063988117.jpg"
+    title: "DIALux Evo",
+    category: "Electrical Analysis",
+    year: "Lighting Design",
+    image: dialuxImg,
+    rotation: "-rotate-1",
+    caption: "Interior and exterior lighting simulations, lux calculations, and precision luminaire layouts.",
   },
   {
     id: "exp-6",
-    title: "Quantum Prismatic Field",
-    caption: "Dynamic chromatic aberration and fluid distortion in zero-gravity space.",
-    year: "2026",
-    category: "Generative Art",
-    rotation: "rotate-1",
-    image: "/src/assets/images/exploration_abstract_forms_1794063987094.jpg"
-  }
+    title: "Power BI & Excel",
+    category: "Office & Reporting",
+    year: "BOQ & Dashboards",
+    image: powerBiImg,
+    rotation: "rotate-2",
+    caption: "Engineering dashboards, BOQ preparation, material submittals, and calculation schedules.",
+  },
 ];
 
-export const STATS = [
+export const STATS: StatItem[] = [
   {
     number: "2+",
-    label: "Years Experience",
-    detail: "Hands-on experience in electrical systems design, shop drawings, and BIM coordination."
+    label: "Years of Engineering Experience",
+    detail:
+      "Delivering electrical design, technical office shop drawings, and BIM coordination across Egypt and Saudi Arabia.",
   },
   {
     number: "10+",
-    label: "Projects Done",
-    detail: "Delivered across commercial, residential, educational, hospitality, and institutional projects in Egypt and Saudi Arabia."
+    label: "Projects & Milestones Delivered",
+    detail:
+      "Institutional campuses, luxury hotels, residential compounds, and educational renovations.",
   },
   {
-    number: "100%",
-    label: "Code & Quality Compliance",
-    detail: "Rigorous adherence to international and local electrical codes, clash-free Navisworks coordination, and shop drawing standards."
-  }
+    number: "LOD 350",
+    label: "BIM Precision & Code Compliance",
+    detail:
+      "Clash-free Revit MEP models, Navisworks federation, and ETAP/Ecodial verified power studies.",
+  },
+];
+
+export const CERTIFICATIONS: CertificationItem[] = [
+  {
+    id: "bim-diploma",
+    title: "BIM Diploma – Revit Track",
+    issuer: "Eduneers",
+    date: "Oct 2025",
+    badge: "Top 10",
+    url: "https://drive.google.com/file/d/1bBsFGe4ouVIbqwhwckdinsn6q839DLvD/view?usp=sharing",
+  },
+  {
+    id: "knx-bas",
+    title: "KNX Building Automation System",
+    issuer: "Schneider Electric",
+    date: "Feb 2023",
+    url: "https://drive.google.com/file/d/12SWP1Ve3X6biYK0fFQIU449M9I-jGvw2/view?usp=sharing",
+  },
+  {
+    id: "pep",
+    title: "Professional Engineer Program",
+    issuer: "EduVate",
+    date: "Oct 2022",
+    badge: "90%",
+    url: "https://drive.google.com/file/d/1T7rm8YOl-FlLFageuXJr1hbv_VLNOWnK/view?usp=sharing",
+  },
+  {
+    id: "automation-diploma",
+    title: "Automation Diploma",
+    issuer: "HA Consulting Group",
+    date: "Aug 2021",
+    url: "https://drive.google.com/file/d/1J7r9DImAbIe30f-RDULyrRb7IHKM6xLA/view?usp=sharing",
+  },
+];
+
+export const TOOL_GROUPS: ToolGroup[] = [
+  {
+    id: "bim-coordination",
+    category: "BIM & Coordination",
+    items: [
+      {
+        name: "Revit",
+        description: "Electrical modeling, family creation, LOD 300/350/400",
+      },
+      {
+        name: "Navisworks",
+        description: "Clash detection, coordination review, model federation",
+      },
+      {
+        name: "AutoCAD",
+        description: "Shop drawings, SLDs, as-built documentation",
+      },
+    ],
+  },
+  {
+    id: "electrical-analysis",
+    category: "Electrical Analysis",
+    items: [
+      {
+        name: "ETAP & Ecodial",
+        description: "Load flow, short circuit, cable sizing",
+      },
+      {
+        name: "E-Design",
+        description: "CB selectivity, LV panel protection coordination",
+      },
+      {
+        name: "DIALux Evo",
+        description: "Lighting calculations, luminaire layout",
+      },
+    ],
+  },
+  {
+    id: "office-reporting",
+    category: "Office & Reporting",
+    items: [
+      {
+        name: "Power BI",
+        description: "Engineering dashboards, project progress reporting",
+      },
+      {
+        name: "Excel",
+        description: "BOQ preparation, material submittals, calculation schedules",
+      },
+      {
+        name: "Word & PowerPoint",
+        description: "Technical reports, presentations, tender documentation",
+      },
+    ],
+  },
 ];

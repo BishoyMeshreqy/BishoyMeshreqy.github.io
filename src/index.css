@@ -2,12 +2,12 @@
 
 @layer base {
   :root {
-    --bg: 0 0% 4%;
-    --surface: 0 0% 8%;
-    --text: 0 0% 96%;
-    --muted: 0 0% 53%;
-    --stroke: 0 0% 12%;
-    --accent: 0 0% 96%;
+    --bg: 210 25% 97%;
+    --surface: 0 0% 100%;
+    --text: 220 26% 14%;
+    --muted: 215 16% 42%;
+    --stroke: 214 20% 88%;
+    --accent: 215 62% 40%;
   }
 
   * {
@@ -16,7 +16,7 @@
 
   html {
     scroll-behavior: smooth;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -94,15 +94,15 @@
 }
 
 .accent-gradient {
-  background: linear-gradient(90deg, #89AACC 0%, #4E85BF 100%);
+  background: linear-gradient(90deg, #275CA6 0%, #3B82F6 100%);
 }
 
 .accent-gradient-rev {
-  background: linear-gradient(270deg, #89AACC 0%, #4E85BF 100%);
+  background: linear-gradient(270deg, #275CA6 0%, #3B82F6 100%);
 }
 
 .bg-halftone {
-  background-image: radial-gradient(circle, #000000 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(26, 33, 46, 0.14) 1px, transparent 1px);
   background-size: 4px 4px;
 }
 

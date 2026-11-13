@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-[hsl(var(--bg))] text-[hsl(var(--text))] font-body selection:bg-[#4E85BF]/30 selection:text-white relative">
+      <div className="min-h-screen bg-[hsl(var(--bg))] text-[hsl(var(--text))] font-body selection:bg-[#275CA6]/15 selection:text-[hsl(var(--text))] relative">
         {/* Loading Screen Overlay */}
         <AnimatePresence>
           {isLoading && (

@@ -32,32 +32,15 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
 
   const CATEGORIES = [
     "All",
-    "BIM Coordination",
-    "Substations & Power",
-    "Healthcare & Critical",
-    "Low Current & Infrastructure",
+    "Institutional",
+    "Hospitality",
+    "Residential",
+    "Educational",
   ];
 
   const filteredProjects = PROJECTS.filter((p) => {
     if (selectedCategory === "All") return true;
-    if (selectedCategory === "BIM Coordination") return p.category.includes("BIM");
-    if (selectedCategory === "Substations & Power")
-      return (
-        p.category.includes("Substation") ||
-        p.category.includes("Power") ||
-        p.category.includes("Industrial") ||
-        p.category.includes("Mission Critical")
-      );
-    if (selectedCategory === "Healthcare & Critical")
-      return p.category.includes("Healthcare") || p.category.includes("Critical");
-    if (selectedCategory === "Low Current & Infrastructure")
-      return (
-        p.category.includes("Infrastructure") ||
-        p.category.includes("Low Current") ||
-        p.category.includes("Earthing") ||
-        p.category.includes("Lighting")
-      );
-    return true;
+    return p.category === selectedCategory;
   });
 
   return (
@@ -70,7 +53,7 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/85 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
           />
 
           {/* Modal Container */}
@@ -82,9 +65,9 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
             className="relative w-full max-w-5xl max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 sm:px-8 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/70 backdrop-blur-md sticky top-0 z-20">
+            <div className="flex items-center justify-between px-6 py-4 sm:px-8 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md sticky top-0 z-20">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono text-[#89AACC] uppercase tracking-wider">
+                <span className="text-xs font-mono text-[#275CA6] uppercase tracking-wider font-medium">
                   Project Portfolio
                 </span>
                 <span className="text-xs text-[hsl(var(--muted))]">
@@ -95,7 +78,7 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
               <button
                 onClick={onClose}
                 aria-label="Close projects view"
-                className="w-9 h-9 rounded-full bg-[hsl(var(--stroke))]/40 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-white transition-colors cursor-pointer"
+                className="w-9 h-9 rounded-full bg-[hsl(var(--stroke))]/50 hover:bg-[hsl(var(--stroke))] flex items-center justify-center text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -105,11 +88,11 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
             <div className="overflow-y-auto p-6 sm:p-8 md:p-10 space-y-8">
               {/* Title Section */}
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-5xl font-display italic text-white tracking-tight">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-display italic text-[hsl(var(--text))] tracking-tight">
                   All Projects & Engineering Works
                 </h2>
                 <p className="text-sm sm:text-base text-[hsl(var(--muted))] mt-2 max-w-2xl">
-                  Comprehensive archive of engineering projects, electrical shop drawing sets, BIM coordination models, and technical documentation.
+                  Institutional, hospitality, residential & educational projects across Egypt and Saudi Arabia.
                 </p>
 
                 {/* Filter Pills */}
@@ -120,8 +103,8 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
                       onClick={() => setSelectedCategory(cat)}
                       className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all cursor-pointer ${
                         selectedCategory === cat
-                          ? "bg-white text-black font-semibold shadow-md"
-                          : "bg-[hsl(var(--bg))]/70 text-[hsl(var(--muted))] hover:text-white border border-[hsl(var(--stroke))]"
+                          ? "bg-[hsl(var(--text))] text-white font-semibold shadow-sm"
+                          : "bg-[hsl(var(--bg))] text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] border border-[hsl(var(--stroke))]"
                       }`}
                     >
                       {cat}
@@ -139,32 +122,32 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
                       onClose();
                       onSelectProject(proj);
                     }}
-                    className="p-5 sm:p-6 rounded-2xl bg-[hsl(var(--bg))]/60 border border-[hsl(var(--stroke))] hover:border-white/20 transition-all flex flex-col justify-between group cursor-pointer"
+                    className="p-5 sm:p-6 rounded-2xl bg-[hsl(var(--bg))]/70 hover:bg-white border border-[hsl(var(--stroke))] hover:border-[#275CA6]/40 hover:shadow-lg transition-all flex flex-col justify-between group cursor-pointer"
                   >
                     <div>
                       {/* Image Preview */}
-                      <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-black/40 mb-4 border border-white/5">
+                      <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-100 mb-4 border border-[hsl(var(--stroke))]">
                         <img
                           src={proj.image}
-                          alt={proj.title}
+                          alt={proj.alt || proj.title}
                           referrerPolicy="no-referrer"
                           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         />
-                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-[hsl(var(--bg))]/80 backdrop-blur-md border border-white/10 text-[10px] font-mono text-[#89AACC] uppercase">
+                        <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-slate-900/75 backdrop-blur-md border border-white/15 text-[10px] font-mono text-sky-200 uppercase">
                           {proj.category}
                         </div>
-                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-[hsl(var(--bg))]/80 backdrop-blur-md border border-white/10 text-[10px] font-mono text-white/80">
-                          {proj.year}
+                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-slate-900/75 backdrop-blur-md border border-white/15 text-[10px] font-mono text-white">
+                          {proj.location}
                         </div>
                       </div>
 
-                      {/* Title & Client */}
+                      {/* Title & Scope */}
                       <div className="mb-2">
-                        <h3 className="text-xl font-medium text-white group-hover:text-[#89AACC] transition-colors">
+                        <h3 className="text-xl font-medium text-[hsl(var(--text))] group-hover:text-[#275CA6] transition-colors">
                           {proj.title}
                         </h3>
                         <p className="text-xs text-[hsl(var(--muted))] mt-0.5">
-                          {proj.client} · {proj.role}
+                          {proj.location} · {proj.scopeOverlay}
                         </p>
                       </div>
 
@@ -187,11 +170,11 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
                     </div>
 
                     {/* Bottom CTA */}
-                    <div className="pt-3 border-t border-[hsl(var(--stroke))]/60 flex items-center justify-between text-xs">
-                      <span className="text-[#89AACC] font-mono text-[11px]">
+                    <div className="pt-3 border-t border-[hsl(var(--stroke))] flex items-center justify-between text-xs">
+                      <span className="text-[#275CA6] font-mono text-[11px] font-medium">
                         {proj.metrics || "Engineering Excellence"}
                       </span>
-                      <span className="text-white group-hover:translate-x-1 transition-transform inline-flex items-center gap-1 font-medium">
+                      <span className="text-[hsl(var(--text))] group-hover:text-[#275CA6] group-hover:translate-x-1 transition-all inline-flex items-center gap-1 font-medium">
                         <span>View Details</span>
                         <span>→</span>
                       </span>
@@ -207,7 +190,7 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
                 </span>
                 <button
                   onClick={onClose}
-                  className="px-5 py-2.5 text-xs text-[hsl(var(--muted))] hover:text-white transition-colors cursor-pointer"
+                  className="px-5 py-2.5 text-xs text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-colors cursor-pointer"
                 >
                   Close Window
                 </button>

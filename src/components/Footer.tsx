@@ -77,7 +77,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
       id="contact"
       className="relative bg-[hsl(var(--bg))] pt-16 md:pt-24 pb-8 md:pb-12 overflow-hidden border-t border-[hsl(var(--stroke))]"
     >
-      {/* Background Video: Flipped vertically with bg-black/60 */}
+      {/* Background Video: luminous light wash */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <video
           ref={videoRef}
@@ -85,17 +85,17 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           muted
           loop
           playsInline
-          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 scale-y-[-1] opacity-35"
+          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 scale-y-[-1] opacity-15 invert brightness-110"
         />
-        <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F7FA]/90 via-[#EDF2F7]/85 to-[#E6ECF5]/95 backdrop-blur-[2px]" />
       </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16 flex flex-col gap-16 md:gap-24">
         {/* GSAP Marquee Ribbon */}
-        <div className="w-full overflow-hidden border-y border-[hsl(var(--stroke))]/60 py-4 select-none">
+        <div className="w-full overflow-hidden border-y border-[hsl(var(--stroke))] py-4 select-none">
           <div
             ref={marqueeRef}
-            className="flex whitespace-nowrap text-xs md:text-sm font-mono tracking-[0.3em] uppercase text-[hsl(var(--muted))]/80"
+            className="flex whitespace-nowrap text-xs md:text-sm font-mono tracking-[0.3em] uppercase text-[hsl(var(--muted))]"
           >
             <span>{marqueeText}</span>
             <span>{marqueeText}</span>
@@ -104,12 +104,12 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
         {/* Big CTA Section */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto py-6">
-          <span className="text-xs text-[hsl(var(--muted))] uppercase tracking-[0.3em] font-medium mb-6">
+          <span className="text-xs text-[#275CA6] uppercase tracking-[0.3em] font-medium mb-6">
             Get in touch
           </span>
 
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-display italic text-[hsl(var(--text))] leading-tight mb-8">
-            Let's create something extraordinary together.
+            Let's Build the future together
           </h2>
 
           <p className="text-sm md:text-base text-[hsl(var(--muted))] max-w-lg mb-10 leading-relaxed">
@@ -122,26 +122,26 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             {/* Email CTA Button with gradient hover border ring */}
             <a
               href="mailto:BishoyMagdy.30@hotmail.com"
-              className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 inline-flex"
+              className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 inline-flex shadow-md"
             >
               <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative flex items-center gap-2 px-8 py-4 rounded-full bg-[hsl(var(--surface))] text-sm sm:text-base text-white font-medium shadow-2xl">
-                <Mail className="w-4 h-4 text-[#89AACC]" />
+              <span className="relative flex items-center gap-2 px-8 py-4 rounded-full bg-[hsl(var(--surface))] text-sm sm:text-base text-[hsl(var(--text))] font-medium">
+                <Mail className="w-4 h-4 text-[#275CA6]" />
                 <span>BishoyMagdy.30@hotmail.com</span>
-                <ArrowUpRight className="w-4 h-4 text-[hsl(var(--muted))] group-hover:text-white transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-4 h-4 text-[hsl(var(--muted))] group-hover:text-[#275CA6] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </a>
 
             {/* Quick copy email button */}
             <button
               onClick={copyEmail}
-              className="flex items-center gap-2 px-5 py-4 rounded-full bg-[hsl(var(--surface))]/80 hover:bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] text-xs sm:text-sm text-[hsl(var(--muted))] hover:text-white transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-5 py-4 rounded-full bg-[hsl(var(--surface))] hover:bg-white border border-[hsl(var(--stroke))] text-xs sm:text-sm text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-all duration-200 cursor-pointer shadow-xs"
               title="Copy Email"
             >
               {copied ? (
                 <>
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span className="text-emerald-400">Copied to clipboard</span>
+                  <Check className="w-4 h-4 text-emerald-600" />
+                  <span className="text-emerald-600 font-medium">Copied to clipboard</span>
                 </>
               ) : (
                 <>
@@ -154,7 +154,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             {/* Open message modal */}
             <button
               onClick={onOpenContact}
-              className="px-6 py-4 rounded-full bg-transparent hover:bg-white/5 border border-white/10 text-xs sm:text-sm text-[hsl(var(--text))] transition-colors"
+              className="px-6 py-4 rounded-full bg-[hsl(var(--surface))]/70 hover:bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] text-xs sm:text-sm text-[hsl(var(--text))] transition-colors shadow-xs cursor-pointer"
             >
               Send Message
             </button>
@@ -162,7 +162,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
         </div>
 
         {/* Footer Bar: Contact info, Location, Status, and Copyright */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pt-10 border-t border-[hsl(var(--stroke))]/60 text-xs text-[hsl(var(--muted))]">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pt-10 border-t border-[hsl(var(--stroke))] text-xs text-[hsl(var(--muted))]">
           {/* Contact Details & Links */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6">
             {SOCIAL_LINKS.map((link) => (
@@ -171,46 +171,46 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-white transition-colors tracking-wide"
+                className="hover:text-[#275CA6] transition-colors tracking-wide font-medium"
               >
                 {link.name}
               </a>
             ))}
 
-            <span className="hidden sm:inline text-white/20" aria-hidden="true">·</span>
+            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
 
             {/* Phone */}
             <a
               href="tel:+201212299454"
-              className="flex items-center gap-1.5 hover:text-white transition-colors font-mono tracking-tight"
+              className="flex items-center gap-1.5 hover:text-[#275CA6] transition-colors font-mono tracking-tight"
             >
-              <Phone className="w-3.5 h-3.5 text-[#89AACC]" />
+              <Phone className="w-3.5 h-3.5 text-[#275CA6]" />
               <span>+201212299454</span>
             </a>
 
-            <span className="hidden sm:inline text-white/20" aria-hidden="true">·</span>
+            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
 
             {/* Location */}
-            <div className="flex items-center gap-1.5 text-[hsl(var(--text))]/80">
-              <MapPin className="w-3.5 h-3.5 text-[#89AACC]" />
+            <div className="flex items-center gap-1.5 text-[hsl(var(--text))]/85">
+              <MapPin className="w-3.5 h-3.5 text-[#275CA6]" />
               <span>Cairo, Egypt</span>
             </div>
           </div>
 
           {/* Right side: Status + Copyright */}
           <div className="flex flex-wrap items-center justify-center lg:justify-end gap-5 sm:gap-6">
-            {/* Status: Green pulsing dot + "Available for projects" */}
+            {/* Status */}
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600" />
               </span>
-              <span className="text-[hsl(var(--text))]/90 font-medium">
+              <span className="text-[hsl(var(--text))] font-medium">
                 Available for projects
               </span>
             </div>
 
-            <span className="hidden sm:inline text-white/20" aria-hidden="true">·</span>
+            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
 
             {/* Copyright */}
             <div className="font-mono text-[11px] text-[hsl(var(--muted))]">

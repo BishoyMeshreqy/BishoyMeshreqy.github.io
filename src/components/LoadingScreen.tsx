@@ -115,7 +115,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             className="h-full accent-gradient rounded-full transition-transform duration-75 ease-linear origin-left"
             style={{
               transform: `scaleX(${count / 100})`,
-              boxShadow: "0 0 8px rgba(137, 170, 204, 0.35)",
+              boxShadow: "0 0 8px rgba(39, 92, 166, 0.35)",
             }}
           />
         </div>

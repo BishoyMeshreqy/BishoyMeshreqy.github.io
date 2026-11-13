@@ -8,10 +8,11 @@ interface ContactModalProps {
 }
 
 const PROJECT_TYPES = [
-  "Interactive Web Experience",
-  "Design Engineering / 3D",
-  "Brand Identity & System",
-  "Advisory / Consultation",
+  "Electrical Design",
+  "Electrical Shop-Drawing",
+  "Electrical Calculations",
+  "BIM Modeling",
+  "Other",
 ];
 
 export const ContactModal: React.FC<ContactModalProps> = ({
@@ -20,6 +21,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [projectName, setProjectName] = useState("");
   const [projectType, setProjectType] = useState(PROJECT_TYPES[0]);
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -52,6 +54,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
         setSubmitted(false);
         setName("");
         setEmail("");
+        setProjectName("");
         setMessage("");
         onClose();
       }, 2500);
@@ -75,7 +78,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
+            className="relative w-full max-w-lg max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md">
@@ -92,7 +95,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             </div>
 
             {/* Body Form */}
-            <div className="p-6 sm:p-8">
+            <div className="p-6 sm:p-8 overflow-y-auto">
               {submitted ? (
                 <div className="py-12 flex flex-col items-center text-center">
                   <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-4">
@@ -123,7 +126,6 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Sarah Connor"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
@@ -137,9 +139,20 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     <input
                       type="email"
                       required
-                      placeholder="s.connor@domain.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-mono uppercase text-[hsl(var(--muted))] tracking-wider mb-1.5">
+                      Project Name
+                    </label>
+                    <input
+                      type="text"
+                      value={projectName}
+                      onChange={(e) => setProjectName(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     />
                   </div>

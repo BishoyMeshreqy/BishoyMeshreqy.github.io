@@ -17,13 +17,13 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 100);
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 100);
 
       const workEl = document.getElementById("works");
       const certificationsEl = document.getElementById("certifications");
       const softwareEl = document.getElementById("software-programs");
       const contactEl = document.getElementById("contact");
-      const scrollY = window.scrollY;
 
       if (contactEl && scrollY >= contactEl.offsetTop - 350) {
         setCurrentActive("contact");
@@ -60,7 +60,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 md:pt-6 px-4 pointer-events-none">
       <nav
         aria-label="Main Navigation"
-        className={`pointer-events-auto inline-flex items-center max-w-full overflow-x-auto rounded-full backdrop-blur-md border border-[hsl(var(--stroke))] bg-[hsl(var(--surface))]/90 p-1.5 shadow-sm transition-all duration-300 ${
+        className={`pointer-events-auto inline-flex items-center max-w-full overflow-x-auto sm:overflow-visible rounded-full backdrop-blur-md border border-[hsl(var(--stroke))] bg-[hsl(var(--surface))]/90 p-1.5 shadow-sm transition-all duration-300 ${
           scrolled ? "shadow-lg shadow-slate-900/10 border-slate-300/80" : ""
         }`}
       >
@@ -68,7 +68,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button
           onClick={() => scrollTo("home")}
           aria-label="Home"
-          className="group relative w-9 h-9 rounded-full flex items-center justify-center p-[1.5px] transition-transform duration-300 hover:scale-110 shrink-0"
+          className="group relative w-9 h-9 rounded-full flex items-center justify-center p-[1.5px] transition-transform duration-300 hover:scale-110 shrink-0 cursor-pointer"
         >
           {/* Accent gradient ring that reverses direction on hover */}
           <span className="absolute inset-0 rounded-full accent-gradient group-hover:accent-gradient-rev transition-all duration-300" />
@@ -77,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               src={PROFILE.logoSrc}
               alt="Bishoy Meshreqy BM Logo"
               referrerPolicy="no-referrer"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover scale-105"
             />
           </span>
         </button>

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
 import gsap from "gsap";
-import { ArrowUpRight, Check, Copy, Mail, MapPin, Phone } from "lucide-react";
+import { ArrowUpRight, Check, Copy, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 interface FooterProps {
   onOpenContact: () => void;
@@ -170,9 +170,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#275CA6] transition-colors tracking-wide font-medium"
+                className="flex items-center gap-1.5 hover:text-[#275CA6] transition-colors tracking-wide font-medium"
               >
-                {link.name}
+                <Linkedin className="w-3.5 h-3.5 text-[#275CA6]" />
+                <span>{link.name}</span>
               </a>
             ))}
 
@@ -185,6 +186,31 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             >
               <Phone className="w-3.5 h-3.5 text-[#275CA6]" />
               <span>+201212299454</span>
+            </a>
+
+            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
+
+            {/* WhatsApp */}
+            <a
+              href="https://wa.me/201212299454"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-[#275CA6] transition-colors tracking-wide font-medium"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="w-3.5 h-3.5 text-[#275CA6]"
+                aria-hidden="true"
+              >
+                <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
+                <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1" />
+              </svg>
+              <span>WhatsApp</span>
             </a>
 
             <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>

@@ -375,7 +375,7 @@ export const JOURNAL_ENTRIES: JournalEntry[] = [
 export const EXPLORATIONS: ExplorationItem[] = [
   {
     id: "exp-1",
-    title: "Autodesk Revit MEP",
+    title: "Autodesk Revit",
     category: "BIM & Coordination",
     year: "LOD 300/350/400",
     image: revitMepImg,
@@ -394,7 +394,7 @@ export const EXPLORATIONS: ExplorationItem[] = [
   {
     id: "exp-3",
     title: "Autodesk AutoCAD",
-    category: "BIM & Coordination",
+    category: "Design & 2D-Drawings",
     year: "Shop Drawings",
     image: autocadImg,
     rotation: "-rotate-2",
@@ -403,7 +403,7 @@ export const EXPLORATIONS: ExplorationItem[] = [
   {
     id: "exp-4",
     title: "ETAP, Ecodial & E-Design",
-    category: "Electrical Analysis",
+    category: "Electrical Analysis & Calculations",
     year: "Power Studies",
     image: etapPowerImg,
     rotation: "rotate-3",
@@ -412,7 +412,7 @@ export const EXPLORATIONS: ExplorationItem[] = [
   {
     id: "exp-5",
     title: "DIALux Evo",
-    category: "Electrical Analysis",
+    category: "Lighting",
     year: "Lighting Design",
     image: dialuxImg,
     rotation: "-rotate-1",

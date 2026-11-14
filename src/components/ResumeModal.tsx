@@ -114,51 +114,36 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1">
                     <div>
                       <h4 className="text-base font-medium text-[hsl(var(--text))]">
-                        Principal Design Engineer & Director
+                        Electrical Technical Office Engineer
                       </h4>
                       <p className="text-xs text-[hsl(var(--muted))]">
-                        Apex Spatial Labs · Chicago
+                        Arabian Construction House · Riyadh
                       </p>
                     </div>
                     <span className="text-xs font-mono text-[hsl(var(--muted))] sm:text-right">
-                      2022 — Present
+                      Sep,2025 — Present
                     </span>
                   </div>
                   <p className="text-xs text-[hsl(var(--muted))] leading-relaxed pl-3 border-l border-[hsl(var(--stroke))]">
-                    Directing architecture and real-time graphics for spatial telepresence tools and automotive cockpits.
-                    Supervising a team of 14 hybrid designer-engineers.
+                    Designed and prepared electrical shop drawings & as-built drawings and coordinated with the site and MEP teams.
                   </p>
 
                   <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 pt-3">
                     <div>
                       <h4 className="text-base font-medium text-[hsl(var(--text))]">
-                        Lead Creative Technologist
+                        Electrical Design Engineer
                       </h4>
                       <p className="text-xs text-[hsl(var(--muted))]">
-                        Kinetic Systems · New York & Remote
+                        Evolution for Engineering Consultancy · Cairo
                       </p>
                     </div>
                     <span className="text-xs font-mono text-[hsl(var(--muted))] sm:text-right">
-                      2018 — 2022
+                      Jan,2025 — Sep,2025
                     </span>
                   </div>
                   <p className="text-xs text-[hsl(var(--muted))] leading-relaxed pl-3 border-l border-[hsl(var(--stroke))]">
-                    Architected low-latency WebGL telemetry platforms and algorithmic kinetic typography engines.
+                    Prepared electrical design drawings and coordinated with MEP teams.
                   </p>
-
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1 pt-3">
-                    <div>
-                      <h4 className="text-base font-medium text-[hsl(var(--text))]">
-                        Senior Interactive Developer
-                      </h4>
-                      <p className="text-xs text-[hsl(var(--muted))]">
-                        Studio Mono · San Francisco
-                      </p>
-                    </div>
-                    <span className="text-xs font-mono text-[hsl(var(--muted))] sm:text-right">
-                      2013 — 2018
-                    </span>
-                  </div>
                 </div>
               </div>
 
@@ -166,30 +151,30 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
               <div className="space-y-4">
                 <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] border-b border-[hsl(var(--stroke))] pb-2 font-medium">
                   <Code2 className="w-4 h-4" />
-                  <span>Technical & Creative Stack</span>
+                  <span>Technical Software Programs</span>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                   <div className="p-4 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))]">
                     <span className="font-semibold text-[hsl(var(--text))] block mb-2 font-mono uppercase text-[10px]">
-                      Frontend & 3D
+                      BIM & Coordination Tools
                     </span>
                     <p className="text-[hsl(var(--muted))] leading-relaxed">
-                      React 19, TypeScript, WebGL, Three.js, GSAP, Framer Motion, Tailwind CSS, HLS Streaming, Canvas API.
+                      Revit & Navisworks & AutoCAD.
                     </p>
                   </div>
                   <div className="p-4 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))]">
                     <span className="font-semibold text-[hsl(var(--text))] block mb-2 font-mono uppercase text-[10px]">
-                      Design & Architecture
+                      Electrical Design & Analysis
                     </span>
                     <p className="text-[hsl(var(--muted))] leading-relaxed">
-                      Creative Direction, Design Systems, Typography, Motion Choreography, Sound Synthesis, Performance Profiling.
+                      DIALux Evo & ETAP & Ecodial & E-Design.
                     </p>
                   </div>
                 </div>
               </div>
 
-              {/* Education & Honors */}
+              {/* Education & Courses */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                 <div>
                   <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] mb-3 font-medium">
@@ -197,22 +182,23 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                     <span>Education</span>
                   </div>
                   <h5 className="text-sm font-medium text-[hsl(var(--text))]">
-                    B.S. in Computer Science & Visual Studies
+                    B.S. in Electrical Power & Machines
                   </h5>
                   <p className="text-xs text-[hsl(var(--muted))] mt-1">
-                    Northwestern University, Magna Cum Laude
+                    El-Shorouk Academy, Cairo
                   </p>
                 </div>
 
                 <div>
                   <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] mb-3 font-medium">
                     <Award className="w-4 h-4" />
-                    <span>Honors</span>
+                    <span>Courses</span>
                   </div>
                   <ul className="text-xs text-[hsl(var(--muted))] space-y-1">
-                    <li>· Awwwards Site of the Year Nominee (2025)</li>
-                    <li>· TDC Typography Certificate of Excellence</li>
-                    <li>· 6× FWA of the Day & Developer Awards</li>
+                    <li>· Eduneers, BIM Diploma - Revit Track - Top 10    (2025)</li>
+                    <li>· Schneider, KNX Building Automation System       (2023)</li>
+                    <li>· EduVate, Professional Program - Excellent Grade (2022)</li>
+                    <li>· HA Consulting Group, Automation Diploma         (2021)</li>
                   </ul>
                 </div>
               </div>

@@ -19,7 +19,11 @@ export const Explorations: React.FC<ExplorationsProps> = ({
   const col2Ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 768px)", () => {
       if (!sectionRef.current || !centerRef.current) return;
 
       // Layer 1: Pinned Center
@@ -57,9 +61,9 @@ export const Explorations: React.FC<ExplorationsProps> = ({
           },
         });
       }
-    }, sectionRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   const col1Items = EXPLORATIONS.slice(0, 3);
@@ -69,15 +73,15 @@ export const Explorations: React.FC<ExplorationsProps> = ({
     <section
       id="software-programs"
       ref={sectionRef}
-      className="relative min-h-[300vh] bg-[hsl(var(--bg))] overflow-hidden"
+      className="relative min-h-fit md:min-h-[300vh] bg-[hsl(var(--bg))] overflow-hidden"
     >
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B82F6]/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#3B82F6]/10 dark:bg-[#3B82F6]/20 rounded-full blur-[140px] pointer-events-none" />
 
-      {/* Layer 1: Pinned Center (z-10) */}
+      {/* Layer 1: Stacked header on mobile, Pinned Center on desktop (z-10) */}
       <div
         ref={centerRef}
-        className="h-screen w-full flex flex-col items-center justify-center text-center px-6 z-10 pointer-events-none"
+        className="w-full py-16 md:py-0 md:h-viewport flex flex-col items-center justify-center text-center px-6 z-10 pointer-events-none"
       >
         <div className="max-w-xl mx-auto flex flex-col items-center">
           <div className="flex items-center gap-2 mb-4 pointer-events-auto">
@@ -90,7 +94,7 @@ export const Explorations: React.FC<ExplorationsProps> = ({
 
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-light text-[hsl(var(--text))] tracking-tight mb-4">
             Engineering{" "}
-            <span className="font-display italic font-normal text-[#275CA6]">
+            <span className="font-display italic font-normal text-[#275CA6] dark:text-[#60A5FA]">
               toolkit
             </span>
           </h2>
@@ -109,29 +113,29 @@ export const Explorations: React.FC<ExplorationsProps> = ({
             >
               <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative flex items-center gap-2 text-[hsl(var(--text))]">
-                <Sparkles className="w-3.5 h-3.5 text-[#275CA6]" />
+                <Sparkles className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
                 <span>Connect on LinkedIn</span>
-                <ArrowUpRight className="w-3.5 h-3.5 text-[hsl(var(--muted))] group-hover:text-[#275CA6] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-[hsl(var(--muted))] group-hover:text-[#275CA6] dark:group-hover:text-[#60A5FA] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </span>
             </a>
           </div>
         </div>
       </div>
 
-      {/* Layer 2: Parallax Columns (z-20, absolute overlay that scrolls) */}
-      <div className="absolute inset-0 z-20 pointer-events-none pt-32 pb-48">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12 h-full">
-          <div className="grid grid-cols-2 gap-8 md:gap-40 h-full">
+      {/* Layer 2: Responsive grid on mobile, Parallax Columns overlay on desktop (z-20) */}
+      <div className="relative md:absolute md:inset-0 z-20 pointer-events-none pt-2 pb-16 md:pt-32 md:pb-48">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 md:px-12 h-full">
+          <div className="grid grid-cols-2 gap-4 sm:gap-8 md:gap-40 h-full">
             {/* Column 1 (Left) */}
             <div
               ref={col1Ref}
-              className="flex flex-col gap-24 md:gap-48 items-start pt-12"
+              className="flex flex-col gap-5 sm:gap-10 md:gap-48 items-center md:items-start md:pt-12"
             >
               {col1Items.map((item) => (
                 <div
                   key={item.id}
                   onClick={() => onOpenLightbox(item)}
-                  className={`pointer-events-auto group w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] shadow-xl cursor-pointer relative transition-all duration-500 hover:scale-105 hover:border-[#275CA6]/50 ${item.rotation}`}
+                  className={`pointer-events-auto group w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] shadow-xl cursor-pointer relative transition-all duration-500 hover:scale-105 hover:border-[#275CA6]/50 dark:hover:border-[#60A5FA]/50 md:${item.rotation}`}
                 >
                   <img
                     src={item.image}
@@ -140,11 +144,11 @@ export const Explorations: React.FC<ExplorationsProps> = ({
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex flex-col justify-end">
-                    <span className="text-[10px] text-sky-300 font-mono uppercase tracking-wider mb-1">
+                  <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-5 flex flex-col justify-end">
+                    <span className="text-[9px] sm:text-[10px] text-sky-300 font-mono uppercase tracking-wider mb-1">
                       {item.category}
                     </span>
-                    <h4 className="text-sm sm:text-base font-medium text-white group-hover:text-sky-200 transition-colors">
+                    <h4 className="text-xs sm:text-base font-medium text-white group-hover:text-sky-200 transition-colors leading-snug">
                       {item.title}
                     </h4>
                   </div>
@@ -155,13 +159,13 @@ export const Explorations: React.FC<ExplorationsProps> = ({
             {/* Column 2 (Right) */}
             <div
               ref={col2Ref}
-              className="flex flex-col gap-24 md:gap-48 items-end pt-48"
+              className="flex flex-col gap-5 sm:gap-10 md:gap-48 items-center md:items-end pt-6 sm:pt-12 md:pt-48"
             >
               {col2Items.map((item) => (
                 <div
                   key={item.id}
                   onClick={() => onOpenLightbox(item)}
-                  className={`pointer-events-auto group w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] shadow-xl cursor-pointer relative transition-all duration-500 hover:scale-105 hover:border-[#275CA6]/50 ${item.rotation}`}
+                  className={`pointer-events-auto group w-full max-w-[320px] aspect-square rounded-2xl overflow-hidden bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] shadow-xl cursor-pointer relative transition-all duration-500 hover:scale-105 hover:border-[#275CA6]/50 dark:hover:border-[#60A5FA]/50 md:${item.rotation}`}
                 >
                   <img
                     src={item.image}
@@ -170,11 +174,11 @@ export const Explorations: React.FC<ExplorationsProps> = ({
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-5 flex flex-col justify-end">
-                    <span className="text-[10px] text-sky-300 font-mono uppercase tracking-wider mb-1">
+                  <div className="absolute bottom-0 left-0 right-0 p-3.5 sm:p-5 flex flex-col justify-end">
+                    <span className="text-[9px] sm:text-[10px] text-sky-300 font-mono uppercase tracking-wider mb-1">
                       {item.category}
                     </span>
-                    <h4 className="text-sm sm:text-base font-medium text-white group-hover:text-sky-200 transition-colors">
+                    <h4 className="text-xs sm:text-base font-medium text-white group-hover:text-sky-200 transition-colors leading-snug">
                       {item.title}
                     </h4>
                   </div>

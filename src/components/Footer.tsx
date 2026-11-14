@@ -75,9 +75,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
   return (
     <footer
       id="contact"
-      className="relative bg-[hsl(var(--bg))] pt-16 md:pt-24 pb-8 md:pb-12 overflow-hidden border-t border-[hsl(var(--stroke))]"
+      className="relative bg-[hsl(var(--bg))] pt-16 md:pt-24 pb-[max(2rem,env(safe-area-inset-bottom))] md:pb-[max(3rem,env(safe-area-inset-bottom))] overflow-hidden border-t border-[hsl(var(--stroke))]"
     >
-      {/* Background Video: luminous light wash */}
+      {/* Background Video: luminous light wash / deep obsidian wash in dark mode */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <video
           ref={videoRef}
@@ -85,9 +85,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           muted
           loop
           playsInline
-          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 scale-y-[-1] opacity-15 invert brightness-110"
+          aria-hidden="true"
+          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 scale-y-[-1] opacity-15 invert brightness-110 dark:invert-0 dark:opacity-25 dark:brightness-90 transition-all duration-300"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F7FA]/90 via-[#EDF2F7]/85 to-[#E6ECF5]/95 backdrop-blur-[2px]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F7FA]/90 via-[#EDF2F7]/85 to-[#E6ECF5]/95 dark:from-[#0b101b]/90 dark:via-[#0e1525]/88 dark:to-[#070b13]/95 backdrop-blur-[2px] transition-colors duration-300" />
       </div>
 
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16 flex flex-col gap-16 md:gap-24">
@@ -104,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
 
         {/* Big CTA Section */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto py-6">
-          <span className="text-xs text-[#275CA6] uppercase tracking-[0.3em] font-medium mb-6">
+          <span className="text-xs text-[#275CA6] dark:text-[#60A5FA] uppercase tracking-[0.3em] font-medium mb-6">
             Get in touch
           </span>
 
@@ -121,26 +122,26 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             {/* Email CTA Button with gradient hover border ring */}
             <a
               href="mailto:BishoyMagdy.30@hotmail.com"
-              className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 inline-flex shadow-md"
+              className="relative group rounded-full p-[2px] transition-transform duration-300 hover:scale-105 inline-flex max-w-full shadow-md"
             >
               <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
-              <span className="relative flex items-center gap-2 px-8 py-4 rounded-full bg-[hsl(var(--surface))] text-sm sm:text-base text-[hsl(var(--text))] font-medium">
-                <Mail className="w-4 h-4 text-[#275CA6]" />
-                <span>BishoyMagdy.30@hotmail.com</span>
-                <ArrowUpRight className="w-4 h-4 text-[hsl(var(--muted))] group-hover:text-[#275CA6] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              <span className="relative flex items-center gap-2 px-5 sm:px-8 py-3.5 sm:py-4 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-base text-[hsl(var(--text))] font-medium max-w-full">
+                <Mail className="w-4 h-4 text-[#275CA6] dark:text-[#60A5FA] shrink-0" />
+                <span className="truncate">BishoyMagdy.30@hotmail.com</span>
+                <ArrowUpRight className="w-4 h-4 text-[hsl(var(--muted))] group-hover:text-[#275CA6] dark:group-hover:text-[#60A5FA] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shrink-0" />
               </span>
             </a>
 
             {/* Quick copy email button */}
             <button
               onClick={copyEmail}
-              className="flex items-center gap-2 px-5 py-4 rounded-full bg-[hsl(var(--surface))] hover:bg-white border border-[hsl(var(--stroke))] text-xs sm:text-sm text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-all duration-200 cursor-pointer shadow-xs"
+              className="flex items-center gap-2 px-5 py-4 rounded-full bg-[hsl(var(--surface))] hover:bg-white dark:hover:bg-[#1a2233] border border-[hsl(var(--stroke))] text-xs sm:text-sm text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] transition-all duration-200 cursor-pointer shadow-xs"
               title="Copy Email"
             >
               {copied ? (
                 <>
-                  <Check className="w-4 h-4 text-emerald-600" />
-                  <span className="text-emerald-600 font-medium">Copied to clipboard</span>
+                  <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span className="text-emerald-600 dark:text-emerald-400 font-medium">Copied to clipboard</span>
                 </>
               ) : (
                 <>
@@ -170,32 +171,32 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 hover:text-[#275CA6] transition-colors tracking-wide font-medium"
+                className="flex items-center gap-1.5 hover:text-[#275CA6] dark:hover:text-[#60A5FA] transition-colors tracking-wide font-medium"
               >
-                <Linkedin className="w-3.5 h-3.5 text-[#275CA6]" />
+                <Linkedin className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
                 <span>{link.name}</span>
               </a>
             ))}
 
-            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
+            <span className="hidden sm:inline text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
 
             {/* Phone */}
             <a
               href="tel:+201212299454"
-              className="flex items-center gap-1.5 hover:text-[#275CA6] transition-colors font-mono tracking-tight"
+              className="flex items-center gap-1.5 hover:text-[#275CA6] dark:hover:text-[#60A5FA] transition-colors font-mono tracking-tight"
             >
-              <Phone className="w-3.5 h-3.5 text-[#275CA6]" />
+              <Phone className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
               <span>+201212299454</span>
             </a>
 
-            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
+            <span className="hidden sm:inline text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
 
             {/* WhatsApp */}
             <a
               href="https://wa.me/201212299454"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-[#275CA6] transition-colors tracking-wide font-medium"
+              className="flex items-center gap-1.5 hover:text-[#275CA6] dark:hover:text-[#60A5FA] transition-colors tracking-wide font-medium"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -204,7 +205,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="w-3.5 h-3.5 text-[#275CA6]"
+                className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]"
                 aria-hidden="true"
               >
                 <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21" />
@@ -213,11 +214,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
               <span>WhatsApp</span>
             </a>
 
-            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
+            <span className="hidden sm:inline text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
 
             {/* Location */}
             <div className="flex items-center gap-1.5 text-[hsl(var(--text))]/85">
-              <MapPin className="w-3.5 h-3.5 text-[#275CA6]" />
+              <MapPin className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
               <span>Cairo, Egypt</span>
             </div>
           </div>
@@ -228,14 +229,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
             <div className="flex items-center gap-2.5">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600 dark:bg-emerald-400" />
               </span>
               <span className="text-[hsl(var(--text))] font-medium">
                 Available for projects
               </span>
             </div>
 
-            <span className="hidden sm:inline text-slate-300" aria-hidden="true">·</span>
+            <span className="hidden sm:inline text-slate-300 dark:text-slate-700" aria-hidden="true">·</span>
 
             {/* Copyright */}
             <div className="font-mono text-[11px] text-[hsl(var(--muted))]">

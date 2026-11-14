@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { LoadingScreen } from "./components/LoadingScreen";
@@ -25,6 +25,25 @@ import { Project, JournalEntry, ExplorationItem } from "./data/portfolioData";
 
 export default function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isDark, setIsDark] = useState<boolean>(() => {
+    if (typeof document === "undefined") return false;
+    return document.documentElement.classList.contains("dark");
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) {
+      themeMeta.setAttribute("content", isDark ? "#0b101b" : "#275ca6");
+    }
+  }, [isDark]);
 
   // Modal states
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -44,7 +63,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-[hsl(var(--bg))] text-[hsl(var(--text))] font-body selection:bg-[#275CA6]/15 selection:text-[hsl(var(--text))] relative">
+      <div className="min-h-screen bg-[hsl(var(--bg))] text-[hsl(var(--text))] font-body selection:bg-[#275CA6]/15 dark:selection:bg-[#3B82F6]/30 selection:text-[hsl(var(--text))] relative transition-colors duration-300">
         {/* Loading Screen Overlay */}
         <AnimatePresence>
           {isLoading && (
@@ -56,6 +75,8 @@ export default function App() {
         <Navbar
           onOpenResume={() => setIsResumeOpen(true)}
           onOpenContact={() => setIsContactOpen(true)}
+          isDark={isDark}
+          onToggleTheme={() => setIsDark((prev) => !prev)}
         />
 
         {/* Main Content Flow */}

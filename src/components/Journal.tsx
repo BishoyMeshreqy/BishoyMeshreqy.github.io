@@ -74,19 +74,19 @@ export const Journal: React.FC<JournalProps> = ({
                 ease: [0.25, 0.1, 0.25, 1],
               }}
               onClick={() => onSelectArticle(entry)}
-              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 p-4 sm:px-6 sm:py-4 bg-[hsl(var(--surface))] hover:bg-white border border-[hsl(var(--stroke))] hover:border-slate-300 shadow-xs hover:shadow-md rounded-[32px] sm:rounded-full transition-all duration-300 group cursor-pointer"
+              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6 p-4 sm:px-6 sm:py-4 bg-[hsl(var(--surface))] hover:bg-white dark:hover:bg-[#1a2233] border border-[hsl(var(--stroke))] hover:border-slate-300 dark:hover:border-slate-600 shadow-xs hover:shadow-md rounded-[32px] sm:rounded-full transition-all duration-300 group cursor-pointer"
             >
               <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0" />
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 dark:text-emerald-400 shrink-0" />
 
                 {/* Title, Badge & Issuer */}
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-sm sm:text-base md:text-lg font-medium text-[hsl(var(--text))] group-hover:text-[#275CA6] transition-colors truncate">
+                    <h3 className="text-sm sm:text-base md:text-lg font-medium text-[hsl(var(--text))] group-hover:text-[#275CA6] dark:group-hover:text-[#60A5FA] transition-colors truncate">
                       {entry.title}
                     </h3>
                     {entry.badge && (
-                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 shrink-0">
+                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/70 shrink-0">
                         {entry.badge}
                       </span>
                     )}
@@ -110,7 +110,7 @@ export const Journal: React.FC<JournalProps> = ({
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={(e) => e.stopPropagation()}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[hsl(var(--bg))] hover:bg-[#275CA6] border border-[hsl(var(--stroke))] hover:border-[#275CA6] text-xs font-medium text-[#275CA6] hover:text-white transition-all duration-200 shrink-0"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[hsl(var(--bg))] hover:bg-[#275CA6] dark:hover:bg-[#3B82F6] border border-[hsl(var(--stroke))] hover:border-[#275CA6] dark:hover:border-[#3B82F6] text-xs font-medium text-[#275CA6] dark:text-[#60A5FA] hover:text-white transition-all duration-200 shrink-0"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
                   <span>View Certificate</span>

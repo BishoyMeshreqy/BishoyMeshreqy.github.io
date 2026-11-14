@@ -108,15 +108,15 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({
                 </h3>
               </div>
 
-              {/* Hover Overlay: bright frosted architectural glass */}
+              {/* Hover Overlay: frosted architectural glass */}
               <div className="absolute inset-0 bg-[hsl(var(--surface))]/92 backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center p-8 z-20 text-center">
                 <div className="relative p-[1.5px] rounded-full mb-4 group-hover:scale-105 transition-transform duration-300 shadow-md">
                   <span className="absolute -inset-[1px] rounded-full accent-gradient animate-gradient-shift" />
                   <span className="relative flex items-center gap-2 px-5 py-2 rounded-full bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] text-xs md:text-sm text-[hsl(var(--text))] font-medium">
-                    <Eye className="w-3.5 h-3.5 text-[#275CA6]" />
+                    <Eye className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
                     <span>
                       View —{" "}
-                      <span className="font-display italic font-normal text-[#275CA6]">
+                      <span className="font-display italic font-normal text-[#275CA6] dark:text-[#60A5FA]">
                         {project.title}
                       </span>
                     </span>
@@ -131,7 +131,7 @@ export const SelectedWorks: React.FC<SelectedWorksProps> = ({
                 <div className="mt-4 flex flex-wrap justify-center items-center gap-2 text-[11px] text-[hsl(var(--muted))] font-mono">
                   {project.tags.slice(0, 3).map((tag, i) => (
                     <span key={tag}>
-                      {i > 0 && <span className="mr-2 text-slate-300">/</span>}
+                      {i > 0 && <span className="mr-2 text-slate-300 dark:text-slate-600">/</span>}
                       {tag}
                     </span>
                   ))}

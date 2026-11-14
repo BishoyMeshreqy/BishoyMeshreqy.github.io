@@ -53,7 +53,7 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 dark:bg-black/75 backdrop-blur-md"
           />
 
           {/* Modal Container */}
@@ -62,12 +62,12 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-5xl max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
+            className="relative w-full max-w-5xl max-h-modal bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 sm:px-8 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md sticky top-0 z-20">
               <div className="flex items-center gap-3">
-                <span className="text-xs font-mono text-[#275CA6] uppercase tracking-wider font-medium">
+                <span className="text-xs font-mono text-[#275CA6] dark:text-[#60A5FA] uppercase tracking-wider font-medium">
                   Project Portfolio
                 </span>
                 <span className="text-xs text-[hsl(var(--muted))]">
@@ -85,7 +85,7 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
             </div>
 
             {/* Scrollable Body */}
-            <div className="overflow-y-auto p-6 sm:p-8 md:p-10 space-y-8">
+            <div className="overflow-y-auto overscroll-contain p-6 sm:p-8 md:p-10 space-y-8">
               {/* Title Section */}
               <div>
                 <h2 className="text-3xl sm:text-4xl md:text-5xl font-display italic text-[hsl(var(--text))] tracking-tight">
@@ -103,7 +103,7 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
                       onClick={() => setSelectedCategory(cat)}
                       className={`px-3.5 py-1.5 rounded-full text-xs font-mono transition-all cursor-pointer ${
                         selectedCategory === cat
-                          ? "bg-[hsl(var(--text))] text-white font-semibold shadow-sm"
+                          ? "bg-[hsl(var(--text))] text-[hsl(var(--surface))] font-semibold shadow-sm"
                           : "bg-[hsl(var(--bg))] text-[hsl(var(--muted))] hover:text-[hsl(var(--text))] border border-[hsl(var(--stroke))]"
                       }`}
                     >
@@ -122,11 +122,11 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
                       onClose();
                       onSelectProject(proj);
                     }}
-                    className="p-5 sm:p-6 rounded-2xl bg-[hsl(var(--bg))]/70 hover:bg-white border border-[hsl(var(--stroke))] hover:border-[#275CA6]/40 hover:shadow-lg transition-all flex flex-col justify-between group cursor-pointer"
+                    className="p-5 sm:p-6 rounded-2xl bg-[hsl(var(--bg))]/70 hover:bg-white dark:hover:bg-[#1a2233] border border-[hsl(var(--stroke))] hover:border-[#275CA6]/40 dark:hover:border-[#60A5FA]/40 hover:shadow-lg transition-all flex flex-col justify-between group cursor-pointer"
                   >
                     <div>
                       {/* Image Preview */}
-                      <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-100 mb-4 border border-[hsl(var(--stroke))]">
+                      <div className="relative rounded-xl overflow-hidden aspect-[16/10] bg-slate-100 dark:bg-slate-900 mb-4 border border-[hsl(var(--stroke))]">
                         <img
                           src={proj.image}
                           alt={proj.alt || proj.title}
@@ -143,7 +143,7 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
 
                       {/* Title & Scope */}
                       <div className="mb-2">
-                        <h3 className="text-xl font-medium text-[hsl(var(--text))] group-hover:text-[#275CA6] transition-colors">
+                        <h3 className="text-xl font-medium text-[hsl(var(--text))] group-hover:text-[#275CA6] dark:group-hover:text-[#60A5FA] transition-colors">
                           {proj.title}
                         </h3>
                         <p className="text-xs text-[hsl(var(--muted))] mt-0.5">
@@ -171,10 +171,10 @@ export const AllProjectsModal: React.FC<AllProjectsModalProps> = ({
 
                     {/* Bottom CTA */}
                     <div className="pt-3 border-t border-[hsl(var(--stroke))] flex items-center justify-between text-xs">
-                      <span className="text-[#275CA6] font-mono text-[11px] font-medium">
+                      <span className="text-[#275CA6] dark:text-[#60A5FA] font-mono text-[11px] font-medium">
                         {proj.metrics || "Engineering Excellence"}
                       </span>
-                      <span className="text-[hsl(var(--text))] group-hover:text-[#275CA6] group-hover:translate-x-1 transition-all inline-flex items-center gap-1 font-medium">
+                      <span className="text-[hsl(var(--text))] group-hover:text-[#275CA6] dark:group-hover:text-[#60A5FA] group-hover:translate-x-1 transition-all inline-flex items-center gap-1 font-medium">
                         <span>View Details</span>
                         <span>→</span>
                       </span>

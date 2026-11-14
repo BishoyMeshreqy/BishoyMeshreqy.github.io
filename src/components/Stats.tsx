@@ -6,7 +6,7 @@ export const Stats: React.FC = () => {
   return (
     <section className="bg-[hsl(var(--surface))] py-20 md:py-28 border-y border-[hsl(var(--stroke))] relative overflow-hidden">
       {/* Subtle background glow */}
-      <div className="absolute inset-0 bg-radial from-[#275CA6]/[0.04] to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-radial from-[#275CA6]/[0.04] dark:from-[#3B82F6]/[0.09] to-transparent pointer-events-none" />
 
       <div className="max-w-[1200px] mx-auto px-6 md:px-10 lg:px-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12">
@@ -24,7 +24,7 @@ export const Stats: React.FC = () => {
               className="flex flex-col items-start md:border-l md:first:border-none md:border-[hsl(var(--stroke))] md:pl-8 lg:pl-10 group"
             >
               {/* Stat number with tabular nums */}
-              <div className="text-5xl md:text-6xl lg:text-7xl font-display italic text-[hsl(var(--text))] tracking-tight mb-3 tabular-nums group-hover:text-[#275CA6] transition-colors">
+              <div className="text-5xl md:text-6xl lg:text-7xl font-display italic text-[hsl(var(--text))] tracking-tight mb-3 tabular-nums group-hover:text-[#275CA6] dark:group-hover:text-[#60A5FA] transition-colors">
                 {stat.number}
               </div>
 

@@ -2,7 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="format-detection" content="telephone=no" />
     <title>Bishoy Meshreqy — Portfolio</title>
     <meta name="description" content="Portfolio of Bishoy Meshreqy, Electrical Engineer specializing in Design, Technical Office, and BIM coordination." />
     <meta property="og:title" content="Bishoy Meshreqy — Portfolio" />
@@ -24,8 +28,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem('theme');
+          if (saved === 'dark') {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
-  <body class="bg-[#f5f7fa] text-[#1a212e] selection:bg-[#275ca6]/15 selection:text-[#1a212e] antialiased overflow-x-hidden">
+  <body class="bg-[#f5f7fa] dark:bg-[#0b101b] text-[#1a212e] dark:text-[#f1f5f9] selection:bg-[#275ca6]/15 dark:selection:bg-[#3b82f6]/25 selection:text-[#1a212e] dark:selection:text-[#f1f5f9] antialiased overflow-x-clip transition-colors duration-300">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

@@ -42,7 +42,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 dark:bg-black/75 backdrop-blur-md"
           />
 
           <motion.div
@@ -50,12 +50,12 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-3xl max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
+            className="relative w-full max-w-3xl max-h-modal bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md sticky top-0 z-20">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-[#275CA6] uppercase tracking-wider font-medium">
+                <span className="text-xs font-mono text-[#275CA6] dark:text-[#60A5FA] uppercase tracking-wider font-medium">
                   Curriculum Vitae
                 </span>
                 <span className="text-xs text-[hsl(var(--muted))]">· 2026</span>
@@ -68,8 +68,8 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-600 font-medium">Copied</span>
+                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                      <span className="text-emerald-600 dark:text-emerald-400 font-medium">Copied</span>
                     </>
                   ) : (
                     <>
@@ -89,13 +89,13 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
             </div>
 
             {/* Scrollable CV body */}
-            <div className="overflow-y-auto p-6 sm:p-10 space-y-10">
+            <div className="overflow-y-auto overscroll-contain p-6 sm:p-10 space-y-10">
               {/* Profile Bio */}
               <div>
                 <h2 className="text-3xl sm:text-4xl font-display italic text-[hsl(var(--text))] tracking-tight">
                   Bishoy Meshreqy
                 </h2>
-                <p className="text-sm sm:text-base text-[#275CA6] font-mono mt-1 font-medium">
+                <p className="text-sm sm:text-base text-[#275CA6] dark:text-[#60A5FA] font-mono mt-1 font-medium">
                   Electrical Design · Technical Office · BIM Engineer
                 </p>
                 <p className="mt-4 text-xs sm:text-sm text-[hsl(var(--muted))] leading-relaxed max-w-xl">
@@ -105,7 +105,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
 
               {/* Experience */}
               <div className="space-y-6">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] border-b border-[hsl(var(--stroke))] pb-2 font-medium">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] dark:text-[#60A5FA] border-b border-[hsl(var(--stroke))] pb-2 font-medium">
                   <Briefcase className="w-4 h-4" />
                   <span>Selected Experience</span>
                 </div>
@@ -149,7 +149,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
 
               {/* Core Competencies */}
               <div className="space-y-4">
-                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] border-b border-[hsl(var(--stroke))] pb-2 font-medium">
+                <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] dark:text-[#60A5FA] border-b border-[hsl(var(--stroke))] pb-2 font-medium">
                   <Code2 className="w-4 h-4" />
                   <span>Technical Software Programs</span>
                 </div>
@@ -177,7 +177,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
               {/* Education & Courses */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
                 <div>
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] mb-3 font-medium">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] dark:text-[#60A5FA] mb-3 font-medium">
                     <GraduationCap className="w-4 h-4" />
                     <span>Education</span>
                   </div>
@@ -190,7 +190,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                 </div>
 
                 <div>
-                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] mb-3 font-medium">
+                  <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-[#275CA6] dark:text-[#60A5FA] mb-3 font-medium">
                     <Award className="w-4 h-4" />
                     <span>Courses</span>
                   </div>
@@ -211,7 +211,7 @@ Electrical Technical Office & BIM Engineer with hands-on experience across comme
                 >
                   <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity" />
                   <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium">
-                    <Download className="w-3.5 h-3.5 text-[#275CA6]" />
+                    <Download className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
                     <span>Request Full PDF Dossier</span>
                   </span>
                 </a>

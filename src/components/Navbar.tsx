@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { Moon, Sun } from "lucide-react";
 import { PROFILE } from "../data/portfolioData";
 
 interface NavbarProps {
   onOpenResume: () => void;
   onOpenContact: () => void;
   activeSection?: string;
+  isDark: boolean;
+  onToggleTheme: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenResume,
   onOpenContact,
   activeSection = "home",
+  isDark,
+  onToggleTheme,
 }) => {
   const [scrolled, setScrolled] = useState(false);
   const [currentActive, setCurrentActive] = useState(activeSection);
@@ -57,11 +62,13 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-4 md:pt-6 px-4 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between md:justify-center gap-2 pt-[max(1rem,env(safe-area-inset-top))] md:pt-[max(1.5rem,env(safe-area-inset-top))] px-[max(1rem,env(safe-area-inset-left))] pr-[max(1rem,env(safe-area-inset-right))] md:px-6 pointer-events-none">
       <nav
         aria-label="Main Navigation"
-        className={`pointer-events-auto inline-flex items-center max-w-full overflow-x-auto sm:overflow-visible rounded-full backdrop-blur-md border border-[hsl(var(--stroke))] bg-[hsl(var(--surface))]/90 p-1.5 shadow-sm transition-all duration-300 ${
-          scrolled ? "shadow-lg shadow-slate-900/10 border-slate-300/80" : ""
+        className={`pointer-events-auto inline-flex items-center max-w-[calc(100%-3.25rem)] md:max-w-full overflow-x-auto sm:overflow-visible no-scrollbar overscroll-x-contain rounded-full backdrop-blur-md border border-[hsl(var(--stroke))] bg-[hsl(var(--surface))]/90 p-1.5 shadow-sm transition-all duration-300 ${
+          scrolled
+            ? "shadow-lg shadow-slate-900/10 dark:shadow-black/45 border-slate-300/80 dark:border-slate-700/80"
+            : ""
         }`}
       >
         {/* 1. Logo: 9x9 circle with accent gradient border */}
@@ -159,6 +166,22 @@ export const Navbar: React.FC<NavbarProps> = ({
           Contact
         </button>
       </nav>
+
+      {/* Top-Right Dark Mode Toggle Button */}
+      <button
+        type="button"
+        onClick={onToggleTheme}
+        aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        aria-pressed={isDark}
+        title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+        className="pointer-events-auto md:fixed md:top-[max(1.5rem,env(safe-area-inset-top))] md:right-[max(1.5rem,env(safe-area-inset-right))] shrink-0 w-10 h-10 md:w-11 md:h-11 rounded-full backdrop-blur-md border border-[hsl(var(--stroke))] bg-[hsl(var(--surface))]/90 hover:border-[#275CA6]/60 dark:hover:border-[#60A5FA]/60 text-[hsl(var(--text))] shadow-sm hover:shadow-md flex items-center justify-center transition-all duration-200 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3B82F6] cursor-pointer"
+      >
+        {isDark ? (
+          <Sun className="w-4 h-4 md:w-[18px] md:h-[18px] text-amber-400" />
+        ) : (
+          <Moon className="w-4 h-4 md:w-[18px] md:h-[18px] text-[#275CA6]" />
+        )}
+      </button>
     </header>
   );
 };

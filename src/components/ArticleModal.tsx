@@ -35,7 +35,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 dark:bg-black/75 backdrop-blur-md"
           />
 
           <motion.article
@@ -43,7 +43,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-3xl max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
+            className="relative w-full max-w-3xl max-h-modal bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md sticky top-0 z-20">
@@ -65,16 +65,16 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
             </div>
 
             {/* Reading body */}
-            <div className="overflow-y-auto p-6 sm:p-10 md:p-12 space-y-8">
+            <div className="overflow-y-auto overscroll-contain p-6 sm:p-10 md:p-12 space-y-8">
               {/* Issuer, Date, Badge */}
               <div className="flex items-center gap-3 text-xs text-[hsl(var(--muted))] font-mono">
-                <span className="text-[#275CA6] uppercase font-medium">{article.issuer}</span>
+                <span className="text-[#275CA6] dark:text-[#60A5FA] uppercase font-medium">{article.issuer}</span>
                 <span>·</span>
                 <span>{article.date}</span>
                 {article.badge && (
                   <>
                     <span>·</span>
-                    <span className="text-emerald-700 font-semibold">{article.badge}</span>
+                    <span className="text-emerald-700 dark:text-emerald-400 font-semibold">{article.badge}</span>
                   </>
                 )}
               </div>
@@ -107,12 +107,12 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({
                   <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity" />
                   <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium">
                     <span>View Certificate on Google Drive</span>
-                    <ExternalLink className="w-3.5 h-3.5 text-[#275CA6]" />
+                    <ExternalLink className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
                   </span>
                 </a>
                 <button
                   onClick={onClose}
-                  className="px-4 py-2 rounded-full border border-[hsl(var(--stroke))] hover:border-[#275CA6] text-[hsl(var(--text))] transition-colors cursor-pointer"
+                  className="px-4 py-2 rounded-full border border-[hsl(var(--stroke))] hover:border-[#275CA6] dark:hover:border-[#60A5FA] text-[hsl(var(--text))] transition-colors cursor-pointer"
                 >
                   Close
                 </button>

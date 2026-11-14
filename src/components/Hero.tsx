@@ -104,9 +104,9 @@ export const Hero: React.FC<HeroProps> = ({
     <section
       id="home"
       ref={containerRef}
-      className="relative w-full min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[hsl(var(--bg))] px-6 pt-24 pb-16"
+      className="relative w-full min-h-viewport flex flex-col items-center justify-center overflow-hidden bg-[hsl(var(--bg))] px-5 sm:px-6 pt-24 pb-[max(3.5rem,env(safe-area-inset-bottom))]"
     >
-      {/* Background HLS Video transformed into luminous light atmosphere */}
+      {/* Background HLS Video transformed into luminous atmosphere */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none select-none">
         <video
           ref={videoRef}
@@ -114,11 +114,12 @@ export const Hero: React.FC<HeroProps> = ({
           muted
           loop
           playsInline
-          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 opacity-20 invert brightness-110 contrast-90"
+          aria-hidden="true"
+          className="absolute left-1/2 top-1/2 min-w-full min-h-full w-auto h-auto object-cover -translate-x-1/2 -translate-y-1/2 opacity-20 invert brightness-110 contrast-90 dark:invert-0 dark:opacity-30 dark:brightness-95 dark:contrast-110 transition-all duration-300"
         />
-        {/* Soft luminous daylight veil */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F7FA]/80 via-[#F5F7FA]/60 to-[#F5F7FA]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#3B82F6]/10 rounded-full blur-[120px]" />
+        {/* Soft daylight veil (light) / deep obsidian-navy veil (dark) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F7FA]/80 via-[#F5F7FA]/60 to-[#F5F7FA] dark:from-[#0b101b]/75 dark:via-[#0b101b]/55 dark:to-[#0b101b] transition-colors duration-300" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#3B82F6]/10 dark:bg-[#3B82F6]/20 rounded-full blur-[120px]" />
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[hsl(var(--bg))] to-transparent" />
       </div>
@@ -126,7 +127,7 @@ export const Hero: React.FC<HeroProps> = ({
       {/* Hero Content (centered, z-10) */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-4xl mx-auto my-auto">
         {/* Name */}
-        <h1 className="name-reveal text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-[hsl(var(--text))] mb-6 select-none">
+        <h1 className="name-reveal text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.92] tracking-tight text-[hsl(var(--text))] mb-6 select-none">
           Bishoy Meshreqy
         </h1>
 
@@ -135,7 +136,7 @@ export const Hero: React.FC<HeroProps> = ({
           Electrical{" "}
           <span
             key={roleIndex}
-            className="font-display italic text-[#275CA6] text-2xl md:text-3xl animate-role-fade-in inline-block font-normal underline decoration-[hsl(var(--stroke))] underline-offset-8"
+            className="font-display italic text-[#275CA6] dark:text-[#60A5FA] text-2xl md:text-3xl animate-role-fade-in inline-block font-normal underline decoration-[hsl(var(--stroke))] underline-offset-8"
           >
             {ROLES[roleIndex]}
           </span>{" "}

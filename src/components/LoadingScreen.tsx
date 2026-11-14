@@ -58,7 +58,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }}
-      className="fixed inset-0 z-[9999] bg-[hsl(var(--bg))] flex flex-col justify-between p-8 md:p-14 select-none pointer-events-auto"
+      className="fixed inset-0 z-[9999] min-h-viewport bg-[hsl(var(--bg))] flex flex-col justify-between p-6 pt-[max(2rem,env(safe-area-inset-top))] pb-[max(2rem,env(safe-area-inset-bottom))] md:p-14 select-none pointer-events-auto"
     >
       {/* Top Bar: Portfolio label */}
       <div className="flex justify-between items-start">

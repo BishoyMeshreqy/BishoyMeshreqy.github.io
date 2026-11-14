@@ -70,7 +70,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-slate-900/45 backdrop-blur-md"
+            className="absolute inset-0 bg-slate-900/45 dark:bg-black/75 backdrop-blur-md"
           />
 
           <motion.div
@@ -78,11 +78,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-lg max-h-[90vh] bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
+            className="relative w-full max-w-lg max-h-modal bg-[hsl(var(--surface))] border border-[hsl(var(--stroke))] rounded-3xl overflow-hidden shadow-2xl flex flex-col z-10"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-[hsl(var(--stroke))] bg-[hsl(var(--bg))]/85 backdrop-blur-md">
-              <span className="text-xs font-mono text-[#275CA6] uppercase tracking-wider font-medium">
+              <span className="text-xs font-mono text-[#275CA6] dark:text-[#60A5FA] uppercase tracking-wider font-medium">
                 Initiate Conversation
               </span>
               <button
@@ -95,11 +95,11 @@ export const ContactModal: React.FC<ContactModalProps> = ({
             </div>
 
             {/* Body Form */}
-            <div className="p-6 sm:p-8 overflow-y-auto">
+            <div className="p-6 sm:p-8 overflow-y-auto overscroll-contain">
               {submitted ? (
                 <div className="py-12 flex flex-col items-center text-center">
-                  <div className="w-14 h-14 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-8 h-8 text-emerald-600" />
+                  <div className="w-14 h-14 rounded-full bg-emerald-50 dark:bg-emerald-950/60 border border-emerald-200 dark:border-emerald-800/70 flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-8 h-8 text-emerald-600 dark:text-emerald-400" />
                   </div>
                   <h3 className="text-2xl font-display italic text-[hsl(var(--text))] mb-2">
                     Message Dispatched
@@ -128,7 +128,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-base sm:text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     />
                   </div>
 
@@ -141,7 +141,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-base sm:text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     />
                   </div>
 
@@ -153,7 +153,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       type="text"
                       value={projectName}
                       onChange={(e) => setProjectName(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-base sm:text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     />
                   </div>
 
@@ -164,7 +164,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                     <select
                       value={projectType}
                       onChange={(e) => setProjectType(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] text-base sm:text-sm focus:outline-none focus:border-[#275CA6] transition-colors"
                     >
                       {PROJECT_TYPES.map((t) => (
                         <option key={t} value={t} className="bg-[hsl(var(--surface))] text-[hsl(var(--text))]">
@@ -183,28 +183,28 @@ export const ContactModal: React.FC<ContactModalProps> = ({
                       placeholder="Brief overview of timeline, scope, and objectives..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-sm focus:outline-none focus:border-[#275CA6] transition-colors resize-none"
+                      className="w-full px-4 py-2.5 rounded-xl bg-[hsl(var(--bg))] border border-[hsl(var(--stroke))] text-[hsl(var(--text))] placeholder-[hsl(var(--muted))]/60 text-base sm:text-sm focus:outline-none focus:border-[#275CA6] transition-colors resize-none"
                     />
                   </div>
 
-                  <div className="pt-2 flex items-center justify-between">
+                  <div className="pt-2 flex flex-wrap items-center justify-between gap-3">
                     <a
                       href="mailto:BishoyMagdy.30@hotmail.com"
-                      className="text-xs text-[hsl(var(--muted))] hover:text-[#275CA6] flex items-center gap-1 transition-colors"
+                      className="text-xs text-[hsl(var(--muted))] hover:text-[#275CA6] dark:hover:text-[#60A5FA] flex items-center gap-1 transition-colors"
                     >
-                      <Mail className="w-3.5 h-3.5" />
-                      <span>BishoyMagdy.30@hotmail.com</span>
+                      <Mail className="w-3.5 h-3.5 shrink-0" />
+                      <span className="truncate">BishoyMagdy.30@hotmail.com</span>
                     </a>
 
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex shadow-sm cursor-pointer"
+                      className="relative group rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105 inline-flex shadow-sm cursor-pointer shrink-0"
                     >
                       <span className="absolute -inset-[1px] rounded-full accent-gradient opacity-80 group-hover:opacity-100 transition-opacity" />
                       <span className="relative flex items-center gap-2 px-6 py-2.5 rounded-full bg-[hsl(var(--surface))] text-xs sm:text-sm text-[hsl(var(--text))] font-medium">
                         <span>{isSubmitting ? "Transmitting..." : "Send Brief"}</span>
-                        <Send className="w-3.5 h-3.5 text-[#275CA6]" />
+                        <Send className="w-3.5 h-3.5 text-[#275CA6] dark:text-[#60A5FA]" />
                       </span>
                     </button>
                   </div>

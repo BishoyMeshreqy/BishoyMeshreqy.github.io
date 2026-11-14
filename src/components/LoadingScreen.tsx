@@ -5,7 +5,7 @@ interface LoadingScreenProps {
   onComplete: () => void;
 }
 
-const ROTATING_WORDS = ["Design", "Create", "Inspire"];
+const ROTATING_WORDS = ["Design", "Coordinate", "Build"];
 
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [count, setCount] = useState<number>(0);

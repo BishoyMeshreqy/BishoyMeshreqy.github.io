@@ -443,7 +443,7 @@ export const STATS: StatItem[] = [
       "Institutional campuses, luxury hotels, residential compounds, and educational renovations.",
   },
   {
-    number: "LOD 350",
+    number: "LOD 300-400",
     label: "BIM Precision & Code Compliance",
     detail:
       "Clash-free Revit MEP models, Navisworks federation, and ETAP/Ecodial verified power studies.",

@@ -113,8 +113,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenContact }) => {
           </h2>
 
           <p className="text-sm md:text-base text-[hsl(var(--muted))] max-w-lg mb-10 leading-relaxed">
-            Available for select creative direction, full-stack digital architectures,
-            and brand advisory roles.
+            Available for projects: electrical design & shop-drawings, Revit MEP modeling, BIM coordination, and as-built drawings. Send me your scope and I’ll reply within 24 hours.
           </p>
 
           {/* Action buttons */}

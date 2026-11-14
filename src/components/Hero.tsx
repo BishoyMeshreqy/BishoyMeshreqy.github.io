@@ -144,8 +144,7 @@ export const Hero: React.FC<HeroProps> = ({
 
         {/* Description */}
         <p className="blur-in text-sm md:text-base text-[hsl(var(--muted))] max-w-md mb-12 leading-relaxed">
-          Designing seamless digital interactions by focusing on the unique
-          nuances which bring systems to life.
+          Electrical shop drawings, Revit MEP models, and BIM coordination for commercial, hospitality, residntial, and institutional projects across Egypt and Saudi Arabia.
         </p>
 
         {/* CTA Buttons */}

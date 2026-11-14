@@ -1,6 +1,6 @@
 {
-  "name": "Michael Smith — Portfolio",
-  "description": "Single-page dark portfolio landing page for Michael Smith, featuring dynamic HLS video backdrops, GSAP parallax, selected works, and interactive journal.",
+  "name": "Bishoy Magdy — Portfolio",
+  "description": "Single-page dark portfolio landing page for Bishoy Magdy, featuring dynamic HLS video backdrops, GSAP parallax, selected works, and interactive journal.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
